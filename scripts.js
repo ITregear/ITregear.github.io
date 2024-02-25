@@ -1,3 +1,3 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('greeting').innerText = 'Welcome to My Portfolio!';
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('helloWorldHeading').textContent = 'Tinos is un raton';
 });
