@@ -1,3 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('helloWorldHeading').textContent = 'Tinos is un raton';
+    document.getElementById('aboutMeBtn').addEventListener('click', function() {
+        window.location.href = 'about-me.html';
+    });
 });
