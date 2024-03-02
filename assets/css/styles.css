@@ -3,6 +3,7 @@
     --secondary-color: #648fb4; /* Gray */
     --background-color: #f8f9fa; /* Light gray */
     --text-color: #212529; /* Almost black */
+    font-family: 'Roboto';
 }
 
 a, .button-primary {
