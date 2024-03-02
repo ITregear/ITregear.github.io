@@ -1,0 +1,80 @@
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #648fb4; /* Gray */
+    --background-color: #f8f9fa; /* Light gray */
+    --text-color: #212529; /* Almost black */
+}
+
+a, .button-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding-top: 20px;
+}
+
+.content-secondary {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+}
+
+#tab-container {
+    float: left;
+    width: 20%;
+    height: 100vh; /* Full height */
+    padding: 20px;
+}
+
+.tab {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.tab:hover {
+    background-color: var(--secondary-color);
+}
+
+#content {
+    margin-left: 20%;
+    padding: 20px;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color)
+}
+
+.content-page h1 {
+    text-align: left;
+}
+
+.image-container {
+    display: flex;
+    gap: 20px; /* Space between the large and small images */
+}
+
+.large-image {
+    width: calc(60% - 10px); /* Large image covers 60% of the container width minus half the gap */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.small-images {
+    width: calc(40% - 10px); /* Small images container covers 40% of the container width minus half the gap */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between the two small images */
+}
+
+.small-image {
+    width: 100%; /* Each small image takes the full width of their container */
+    height: calc((100% - 20px) / 2); /* Split the height of the container between the two images, accounting for the gap */
+}
+
+
+.small-images .small-image {
+    width: auto; /* Adjust based on parent */
+}
