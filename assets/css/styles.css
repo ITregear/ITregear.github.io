@@ -79,3 +79,38 @@ body {
 .small-images .small-image {
     width: auto; /* Adjust based on parent */
 }
+
+.profile-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Spacing between image and links */
+}
+
+.profile-photo {
+    width: 150px; /* Or the size you want */
+    height: 150px; /* Maintain aspect ratio */
+    object-fit: cover; /* If you want to crop the image to fill the size */
+    border-radius: 50%; /* Optional: makes the image round */
+}
+
+.social-links {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+}
+
+.social-links li a {
+    display: flex;
+    align-items: center; /* Aligns the icon and text vertically */
+    gap: 10px; /* Spacing between icon and text */
+    text-decoration: none; /* Optional: removes underline from links */
+    color: inherit; /* Optional: link color inherits from parent */
+    font-size: 1.2em; /* Adjusts the size of the text */
+}
+
+.social-links li a:hover {
+    text-decoration: underline; /* Optional: adds underline on hover */
+}
+
+.fab {
+    font-size: 1.5em; /* Adjusts the size of the icons */
+}
