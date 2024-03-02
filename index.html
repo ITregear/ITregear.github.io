@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document Title</title>
+    <title>Ivan Tregear</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <h1 id="helloWorldHeading">Goodbye World</h1>
-    <script src="scripts.js"></script>
+    <div id="tab-container">
+        <button class="tab" onclick="changeTab('about-me')">About Me</button>
+        <button class="tab" onclick="changeTab('apollo-tech')">Apollo Tech</button>
+        <button class="tab" onclick="changeTab('series-elastic-actuator')">Series Elastic Actuator</button>
+        <button class="tab" onclick="changeTab('cycloidal-drive')">Cycloidal Drive</button>
+        <button class="tab" onclick="changeTab('parallel-robot')">Parallel Robot</button>
+        <button class="tab" onclick="changeTab('boid-simulator')">Boid Simulator</button>
+    </div>
+    <div id="content">
+        <!-- Content will be loaded based on different tab-->
+    </div>
+    <script src="assets/js/scripts.js"></script>
 </body>
 </html>
