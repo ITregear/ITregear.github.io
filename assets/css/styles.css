@@ -1,110 +1,76 @@
+/* Theme Variables */
 :root {
-    --primary-color: #007bff; /* Blue */
-    --secondary-color: #648fb4; /* Gray */
-    --background-color: #f8f9fa; /* Light gray */
-    --text-color: #212529; /* Almost black */
+    --primary-color: #7C9EB2;
+    --secondary-color: #52528C;
+    --background-color: #372554;
+    --text-color: #7C9EB2;
     font-family: 'Roboto';
+
+    --tab-width: 20%;
+    --image-gap: 20px;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 a, .button-primary {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--secondary-color);
     padding-top: 20px;
 }
 
-.content-secondary {
-    background-color: var(--secondary-color);
-    color: var(--background-color);
-}
-
-#tab-container {
-    float: left;
-    width: 20%;
-    height: 100vh; /* Full height */
-    padding: 20px;
-}
-
-.tab {
-    display: block;
-    width: 80%;
-    padding: 10px;
-    text-align: left;
-    border: none;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.tab:hover {
-    background-color: var(--secondary-color);
-}
-
-#content {
-    margin-left: 20%;
-    padding: 20px;
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color)
-}
-
+/* Typography */
 .content-page h1 {
     text-align: left;
 }
 
-.image-container {
-    display: flex;
-    gap: 20px; /* Space between the large and small images */
-}
-
-.large-image {
-    width: calc(60% - 10px); /* Large image covers 60% of the container width minus half the gap */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.small-images {
-    width: calc(40% - 10px); /* Small images container covers 40% of the container width minus half the gap */
+/* Layout Components */
+#tab-container {
+    float: left;
+    width: var(--tab-width);
+    height: 100vh; /* Full height */
+    padding: 40px 20px; /* Increased padding for spacing from screen edges */
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Space between the two small images */
+    justify-content: center; /* Center children vertically */
+    gap: 10px; /* Adds space between buttons */
 }
 
-.small-image {
-    width: 100%; /* Each small image takes the full width of their container */
-    height: calc((100% - 20px) / 2); /* Split the height of the container between the two images, accounting for the gap */
-}
-
-
-.small-images .small-image {
-    width: auto; /* Adjust based on parent */
+#content {
+    margin-left: var(--tab-width);
+    padding: 20px;
 }
 
 .profile-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 20px; /* Spacing between image and links */
+    gap: 20px; /* Space between elements */
+    align-items: flex-start; /* Align items vertically */
 }
 
 .profile-photo {
-    width: 150px; /* Or the size you want */
-    height: 150px; /* Maintain aspect ratio */
+    max-width: 40%;
+    height: auto;
     object-fit: cover; /* If you want to crop the image to fill the size */
-    border-radius: 50%; /* Optional: makes the image round */
+    border-radius: 20%; /* Optional: makes the image round */
 }
 
+/* Social Links */
 .social-links {
     list-style: none; /* Removes default list styling */
-    padding: 0;
+    padding: var(--image-gap);
 }
 
 .social-links li a {
     display: flex;
     align-items: center; /* Aligns the icon and text vertically */
-    gap: 10px; /* Spacing between icon and text */
+    gap: var(--image-gap); /* Spacing between icon and text */
     text-decoration: none; /* Optional: removes underline from links */
-    color: inherit; /* Optional: link color inherits from parent */
-    font-size: 1.2em; /* Adjusts the size of the text */
+    color: var(--primary-color-color); /* Optional: link color inherits from parent */
+    font-size: 2em; /* Adjusts the size of the text */
+    background-color: var(--background-color);
 }
 
 .social-links li a:hover {
@@ -113,4 +79,88 @@ body {
 
 .fab {
     font-size: 1.5em; /* Adjusts the size of the icons */
+}
+
+/* Base styles for all image containers */
+.image-container {
+    display: flex;
+    justify-content: left; /* Center images in the available space */
+    align-items: flex-start; /* Align images to the top */
+    gap: var(--image-gap); /* Space between the images */
+    max-width: 100%; /* Adjust based on total available width */
+  }
+  
+  /* Styles for the large landscape with two smaller landscapes */
+  .image-container.large-landscape {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .large-landscape .large-image {
+    max-width: 50%; /* Relative width */
+    height: auto;
+  }
+  
+  .large-landscape .small-images {
+    gap: var(--image-gap);
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .large-landscape .small-image {
+    width: 100%; /* Relative width, auto height for aspect ratio */
+    height: auto;
+  }
+  
+  /* Styles for three portraits side by side */
+  .image-container.portrait-row {
+    flex-direction: row;
+  }
+  
+  .portrait-row .portrait-image {
+    max-width: 30%; /* Split the width equally */
+    height: auto;
+  }
+  
+  /* Styles for one large portrait with two smaller landscapes */
+  .image-container.mixed {
+    flex-direction: row;
+  }
+  
+  .mixed .large-portrait {
+    width: 30%; /* Relative width */
+    height: auto;
+  }
+  
+  .mixed .small-landscape-container {
+    width: 30%;
+    gap: var(--image-gap);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mixed .small-landscape {
+    width: 100%; /* Relative width, auto height for aspect ratio */
+    height: auto;
+  }
+  
+  
+
+/* Individual Components */
+.tab {
+    display: block;
+    width: calc(100% - 40px); /* Adjust width to account for padding */
+    padding: 15px 10px; /* Increased padding for a better look */
+    text-align: center; /* Ensure text is centered */
+    border: none;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.tab:hover, .content-secondary {
+    background-color: var(--secondary-color);
 }
