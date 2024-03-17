@@ -54,7 +54,7 @@ a, .button-primary {
     max-width: 40%;
     height: auto;
     object-fit: cover; /* If you want to crop the image to fill the size */
-    border-radius: 20%; /* Optional: makes the image round */
+    border-radius: 10%; /* Optional: makes the image round */
 }
 
 /* Social Links */
@@ -84,66 +84,60 @@ a, .button-primary {
 /* Base styles for all image containers */
 .image-container {
     display: flex;
-    justify-content: left; /* Center images in the available space */
-    align-items: flex-start; /* Align images to the top */
+    justify-content: left; /* Align images to the left */
+    /*align-items: flex-start; /* Align images to the top */
     gap: var(--image-gap); /* Space between the images */
-    max-width: 100%; /* Adjust based on total available width */
+    flex-wrap: wrap; /* Wrap the content if it exceeds the width */
   }
   
   /* Styles for the large landscape with two smaller landscapes */
-  .image-container.large-landscape {
-    display: flex;
-    flex-direction: row;
+  .large-landscape .large-image,
+  .large-landscape .small-images {
+    flex: 0 0 auto; /* Do not grow or shrink */
   }
   
   .large-landscape .large-image {
-    max-width: 50%; /* Relative width */
-    height: auto;
+    max-width: 65%; /* Adjusted percentage */
   }
   
   .large-landscape .small-images {
-    gap: var(--image-gap);
-    max-width: 30%;
+    max-width: 30%; /* Adjusted percentage */
     display: flex;
     flex-direction: column;
+    gap: var(--image-gap);
   }
   
   .large-landscape .small-image {
-    width: 100%; /* Relative width, auto height for aspect ratio */
+    max-width: 95%;
     height: auto;
   }
   
   /* Styles for three portraits side by side */
-  .image-container.portrait-row {
-    flex-direction: row;
-  }
-  
   .portrait-row .portrait-image {
-    max-width: 30%; /* Split the width equally */
+    max-width: 30%; /* Equal width for each */
     height: auto;
   }
   
   /* Styles for one large portrait with two smaller landscapes */
-  .image-container.mixed {
-    flex-direction: row;
+  .mixed .large-portrait,
+  .mixed .small-landscape-container {
+    flex: 0 0 auto; /* Do not grow or shrink */
   }
   
   .mixed .large-portrait {
-    width: 30%; /* Relative width */
-    height: auto;
+    max-width: 65%; /* Adjusted percentage */
   }
   
   .mixed .small-landscape-container {
-    width: 30%;
+    max-width: 30%; /* Adjusted percentage */
     gap: var(--image-gap);
-    display: flex;
-    flex-direction: column;
   }
   
   .mixed .small-landscape {
-    width: 100%; /* Relative width, auto height for aspect ratio */
+    max-width: 100%;
     height: auto;
   }
+  
   
   
 
@@ -158,7 +152,7 @@ a, .button-primary {
     color: var(--text-color);
     cursor: pointer;
     border-radius: 20px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.5s; /* Smooth transition for hover effect */
 }
 
 .tab:hover, .content-secondary {
