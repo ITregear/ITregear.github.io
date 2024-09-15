@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivan Tregear</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 <body>
-    <div id="tab-container">
-        <button class="tab" onclick="changeTab('about-me')">About Me</button>
-        <button class="tab" onclick="changeTab('apollo-tech')">Apollo Tech</button>
-        <button class="tab" onclick="changeTab('series-elastic-actuator')">Series Elastic Actuator</button>
-        <button class="tab" onclick="changeTab('cycloidal-drive')">Cycloidal Drive</button>
-        <button class="tab" onclick="changeTab('parallel-robot')">Parallel Robot</button>
-        <button class="tab" onclick="changeTab('differential-drive-robot')">Differential Drive Robot</button>
+    <div>
+        <h1>Ivan Tregear</h1>
+        <h2>Engineer</h2>
     </div>
-    <div id="content">
-        <!-- Content will be loaded based on different tab-->
-    </div>
-    <script src="assets/js/scripts.js"></script>
-    <script> 
-    document.addEventListener('DOMContentLoaded', function() {
-        changeTab('about-me');
-    });
-    </script>
 </body>
 </html>
