@@ -1,0 +1,98 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #fdf3e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0;
+    font-weight: boler;
+}
+
+h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+h2 {
+    font-size: 3em;
+    margin: 10px 0;
+}
+
+h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+h2 + h3 {
+    margin-top: 50px;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0 0 0;
+}
+
+h3 a {
+    text-decoration: none;
+    color: black;
+}
+
+h3 a:hover {
+    text-decoration: underline;
+}
+
+.manifesto-list {
+    list-style-type: decimal;
+    padding-left: 40px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.manifesto-list li {
+    margin-bottom: 20px;
+}
+
+.manifesto-list li::marker {
+    font-size: 22px;
+}
+
+.manifesto-point {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.manifesto-quote {
+    font-size: 18px;
+    font-style: italic;
+    margin-left: 20px;
+}
+
+.return-link {
+    margin-top: 30px;
+}
+
+.return-link a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.return-link a:hover {
+    text-decoration: underline;
+}
