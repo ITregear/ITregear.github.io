@@ -19,39 +19,37 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
+  grid-template-areas:
+    "name links"
+    "bio socials";
   gap: 0px 100px;
   width: 100%;
   max-width: 1200px;
   min-height: 350px;
-  align-items: start;
+  align-items: stretch;
   border: 2px solid #e0b0b0;
   padding: 48px 0 48px 0;
   background: none;
 }
 
 .left-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border: 2px solid #b0cbe0;
   grid-column: 1;
   grid-row: 1 / span 2;
-  min-width: 340px;
+  border: 2px solid #b0cbe0;
   padding-right: 24px;
+  display: contents;
 }
 
 .right-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 2px solid #b0e0b7;
   grid-column: 2;
   grid-row: 1 / span 2;
-  min-width: 340px;
+  border: 2px solid #b0e0b7;
   padding-left: 24px;
+  display: contents;
 }
 
 .typewriter {
+  grid-area: name;
   font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
   font-size: 3.1rem;
   font-weight: 700;
@@ -62,19 +60,26 @@ body {
   white-space: nowrap;
   border: 2px dashed #e0b0e0;
   padding: 8px 0 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+  justify-self: stretch;
 }
 
 .bio {
+  grid-area: bio;
   font-size: 1.18rem;
   line-height: 1.7;
   color: #5c4a2d;
   margin-bottom: 0;
-  max-width: 400px;
   border: 2px dashed #b0e0e0;
   padding: 16px 0 16px 0;
+  width: 100%;
+  box-sizing: border-box;
+  justify-self: stretch;
 }
 
 .links-list {
+  grid-area: links;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -82,6 +87,9 @@ body {
   margin-top: 8px;
   border: 2px dashed #e0e0b0;
   padding: 8px 0 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+  justify-self: stretch;
 }
 
 .links-list a {
@@ -98,6 +106,7 @@ body {
 }
 
 .socials-row {
+  grid-area: socials;
   display: flex;
   gap: 22px;
   align-items: center;
@@ -105,6 +114,8 @@ body {
   margin-top: 32px;
   width: 100%;
   border: 2px solid #b0b0e0;
+  box-sizing: border-box;
+  justify-self: stretch;
 }
 
 .icon {
@@ -137,9 +148,6 @@ body {
     max-width: 98vw;
     gap: 48px;
   }
-  .left-col, .right-col {
-    min-width: 220px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -150,13 +158,6 @@ body {
     gap: 40px;
     max-width: 100vw;
     padding: 24px 0 24px 0;
-  }
-  .left-col, .right-col {
-    align-items: center;
-    min-width: 0;
-    width: 100%;
-    text-align: center;
-    padding: 0;
   }
   .bio {
     max-width: 100%;
