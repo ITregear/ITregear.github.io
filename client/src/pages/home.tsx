@@ -111,7 +111,7 @@ export default function Home() {
               >
                 <div className="text-sm typewriter-text leading-relaxed text-typewriter-medium">
                   <p className="mb-3">  
-                    I am a <strong>Chief Technology Officer</strong> working in the sexy and high sought after field of Fast Food Robotics. Along with <strong><a href="https://josef.cn/" target="_blank" rel="noopener noreferrer" className="font-bold focus:underline transition">Josef Chen</a></strong>, we founded <strong>KAIKAKU</strong>, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the <strong>Fusion family</strong>) that have all served food to real paying customers (re-load the page to see them all).
+                    I am a <strong>Chief Technology Officer</strong> working in the highly glamarous field of Fast Food Robotics. Along with <strong><a href="https://josef.cn/" target="_blank" rel="noopener noreferrer" className="font-bold focus:underline transition">Josef Chen</a></strong>, we founded <strong>KAIKAKU</strong>, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the <strong>Fusion family</strong>) that have all served food to real paying customers (re-load the page to see them all).
                   </p>
                   <p className="mb-3">
                     Our goal is to automate the laborious and menial tasks that no human craves, with low cost and targeted robotics, allowing humans to focus on what they will always be superior to machines at; <strong>being hospitable</strong>.
