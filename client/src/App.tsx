@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/toaster"; // Global toast notifications
 import { TooltipProvider } from "@/components/ui/tooltip"; // Tooltip context provider
 import Home from "@/pages/home"; // Home page component
 import NotFound from "@/pages/not-found"; // 404 page component
+import Thoughts from "@/pages/thoughts";
+import TopSecret from "@/pages/top-secret";
 
 // Router component: defines the main application routes
 function Router() {
@@ -15,6 +17,8 @@ function Router() {
     <Switch>
       {/* Home route */}
       <Route path="/" component={Home} />
+      <Route path="/thoughts" component={Thoughts} />
+      <Route path="/top-secret" component={TopSecret} />
       {/* Catch-all route for 404s */}
       <Route component={NotFound} />
     </Switch>

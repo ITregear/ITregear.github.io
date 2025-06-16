@@ -1,21 +1,22 @@
 import { SiLinkedin, SiGithub, SiX } from "react-icons/si";
 import Header from "@/components/header";
 import DocumentSection from "@/components/document-section";
+import RedactedText from "@/components/ui/redacted-text";
+import TabsNav from "@/components/ui/tabs";
 
 export default function Home() {
   const handleSocialClick = (platform: string) => {
     console.log(`Navigate to ${platform} profile`);
-    // TODO: Add actual social media links
   };
 
   const handleLinkClick = (linkType: string) => {
     console.log(`Navigate to ${linkType}`);
-    // TODO: Add actual navigation logic
   };
 
   return (
     <div className="bg-vintage-beige text-typewriter-dark font-typewriter">
       <Header />
+      <TabsNav />
       {/* Main Content */}
       <main className="container mx-auto px-6 pt-[24px] pb-[24px]">
         {/* Bento Box 2x2 Grid */}
@@ -110,15 +111,11 @@ export default function Home() {
                 footer={`DOCUMENT TYPE: BRIEFING\nORIGIN: TECHNICAL DIVISION`}
               >
                 <div className="text-sm typewriter-text leading-relaxed text-typewriter-medium">
-                  <p className="mb-3">  
-                    I am a <strong>Chief Technology Officer</strong> working in the highly glamarous field of Fast Food Robotics. Along with <strong><a href="https://josef.cn/" target="_blank" rel="noopener noreferrer" className="font-bold focus:underline transition">Josef Chen</a></strong>, we founded <strong>KAIKAKU</strong>, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the <strong>Fusion family</strong>) that have all served food to real paying customers (re-load the page to see them all).
-                  </p>
-                  <p className="mb-3">
-                    Our goal is to automate the laborious and menial tasks that no human craves, with low cost and targeted robotics, allowing humans to focus on what they will always be superior to machines at; <strong>being hospitable</strong>.
-                  </p>
-                  <p>
-                    I studied Mechanical Engineering at Imperial College London, with a specialisation in mechatronics and control. At university I sailed (see the Reading Rumble link for my Mangum Opus), went to 568 too many times, and was awarded the Imperial Centenary Prize. In my free time I like to build robots or RC planes, cook meals I watched from a YouTube video without a recipe, and do jujitsu.
-                  </p>
+                  I am a Chief Technology Officer working in the glamarous field of Fast Food Robotics. Along with Josef Chen, we founded KAIKAKU, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the Fusion family) that have all served food to real paying customers (click the image to see them all).
+
+Our goal is to automate the laborious and menial tasks that no human craves, with low cost and targeted robotics, allowing humans to focus on what they will always be superior to machines at; being hospitable.
+
+I studied Mechanical Engineering at Imperial College London, with a specialisation in mechatronics and control. At university I sailed (see the Reading Rumble link for my Mangum Opus), went to 568 too many times, and was awarded the Imperial Centenary Prize. In my free time I like to build robots or RC planes, cook meals I watched from a YouTube video without a recipe, and do jujitsu.
                 </div>
               </DocumentSection>
 

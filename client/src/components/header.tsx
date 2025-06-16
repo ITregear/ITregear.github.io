@@ -4,12 +4,34 @@ import React from "react";
 const imageModules = import.meta.glob("@/assets/hero-images/*.png", { eager: true, import: 'default' });
 const images = Object.values(imageModules) as string[];
 
-function getRandomImage() {
-  return images[Math.floor(Math.random() * images.length)];
+function getNextIndex(current: number) {
+  return (current + 1) % images.length;
+}
+
+function getCurrentIndex() {
+  const stored = window.localStorage.getItem('heroImageIndex');
+  const current = stored ? parseInt(stored, 10) : 0;
+  return isNaN(current) ? 0 : current;
 }
 
 export default function Header() {
-  const [planeImage] = React.useState(() => getRandomImage());
+  const [index, setIndex] = React.useState(() => {
+    if (typeof window !== 'undefined') {
+      return getCurrentIndex();
+    }
+    return 0;
+  });
+
+  const handleClick = () => {
+    setIndex(i => {
+      const next = getNextIndex(i);
+      window.localStorage.setItem('heroImageIndex', String(next));
+      return next;
+    });
+  };
+
+  const planeImage = images[index];
+
   return (
     <header className="container mx-auto px-6 py-8 pt-[0px] pb-[0px]">
       <div className="max-w-5xl mx-auto">
@@ -28,7 +50,11 @@ export default function Header() {
               <img 
                 src={planeImage} 
                 alt="Vintage aircraft blueprint" 
-                className="max-w-full h-auto opacity-90" 
+                className="max-w-full h-auto opacity-90 cursor-pointer" 
+                onClick={handleClick}
+                title="Click to cycle image"
+                style={{userSelect: 'none'}}
+                draggable={false}
               />
             )}
           </div>
@@ -46,7 +72,11 @@ export default function Header() {
               <img 
                 src={planeImage} 
                 alt="Vintage aircraft blueprint" 
-                className="max-w-full h-auto opacity-90" 
+                className="max-w-full h-auto opacity-90 cursor-pointer" 
+                onClick={handleClick}
+                title="Click to cycle image"
+                style={{userSelect: 'none'}}
+                draggable={false}
               />
             )}
           </div>

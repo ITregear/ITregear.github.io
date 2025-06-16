@@ -12,7 +12,7 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+            This is what happens when you try and vibe code your website.
           </p>
         </CardContent>
       </Card>
