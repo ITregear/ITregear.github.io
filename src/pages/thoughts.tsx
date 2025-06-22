@@ -20,20 +20,32 @@ function usePosts(): Post[] {
   const [posts, setPosts] = React.useState<Post[]>([]);
 
   React.useEffect(() => {
-    Promise.all(
-      Object.entries(markdownFiles).map(async ([path, resolver]) => {
-        const raw = await (resolver as () => Promise<string>)();
-        const { attributes, body } = fm(raw) as { attributes: any; body: string };
+    const fetchPosts = async () => {
+      const postsPromises = Object.entries(markdownFiles).map(async ([path, resolver]) => {
+        const rawContent = await (resolver as () => Promise<string>)();
+        const { attributes, body } = fm(rawContent);
+
+        // This regex will find all markdown image tags and replace their paths
+        const processedBody = body.replace(/!\[(.*?)\]\(\.\/images\/(.*?)\)/g, (match, altText, imageName) => {
+          // In production, we need to construct the path relative to the final build directory.
+          // This path might need to be adjusted depending on how Vite processes your assets.
+          const imageUrl = new URL(`/src/assets/thoughts/images/${imageName}`, import.meta.url).href;
+          return `![${altText}](${imageUrl})`;
+        });
+
         return {
-          title: attributes.title || path.split("/").pop()?.replace(/\.md$/, "") || "Untitled",
-          date: attributes.date || "",
-          content: body,
+          title: (attributes as any).title || path.split('/').pop()?.replace(/\.md$/, '') || 'Untitled',
+          date: (attributes as any).date || '',
+          content: processedBody,
         };
-      })
-    ).then((allPosts) => {
-      allPosts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      });
+
+      const allPosts = await Promise.all(postsPromises);
+      allPosts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
       setPosts(allPosts);
-    });
+    };
+
+    fetchPosts();
   }, []);
 
   return posts;
@@ -45,11 +57,8 @@ export default function Thoughts() {
   // Custom image and markdown renderers for markdown
   const markdownComponents = {
     img: (props: any) => {
-      let src = props.src || "";
-      if (!/^https?:\/\//.test(src) && !src.startsWith("/")) {
-        src = `/src/assets/thoughts/images/${src.replace(/^\.\/?images\//, "")}`;
-      }
-      return <img {...props} src={src} alt={props.alt} />;
+      // The URL should now be correctly resolved by the 'usePosts' hook
+      return <img {...props} alt={props.alt} />;
     },
     h1: (props: any) => <h1 className="text-2xl font-bold mt-8 mb-4 text-typewriter-dark">{props.children}</h1>,
     h2: (props: any) => <h2 className="text-xl font-bold mt-7 mb-3 text-typewriter-dark">{props.children}</h2>,
