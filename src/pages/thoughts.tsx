@@ -5,6 +5,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 import path from "path";
+import { trackExternalLinkClick } from "@/lib/utils";
 
 // Vite dynamic import for all markdown files in thoughts (new syntax)
 const markdownFiles = import.meta.glob("/src/assets/thoughts/*.md", { query: "?raw", import: "default" });
@@ -73,6 +74,7 @@ export default function Thoughts() {
         target="_blank"
         rel="noopener noreferrer"
         className="underline hover:text-stamp-red transition-colors"
+        onClick={() => trackExternalLinkClick(props.href)}
       >
         {props.children}
       </a>

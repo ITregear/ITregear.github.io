@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import DocumentSection from "@/components/document-section";
 import RedactedText from "@/components/ui/redacted-text";
 import TabsNav from "@/components/ui/tabs";
+import { trackExternalLinkClick } from "@/lib/utils";
 
 export default function Home() {
   const handleSocialClick = (platform: string) => {
@@ -54,6 +55,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bullet-link w-full text-left transition-all duration-200"
+                      onClick={() => trackExternalLinkClick("https://www.kaikaku.ai/")}
                     >
                       KAIKAKU
                     </a>
@@ -64,6 +66,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bullet-link w-full text-left transition-all duration-200"
+                      onClick={() => trackExternalLinkClick("https://saysovoices.com/talent/ivan-tregear/")}
                     >
                       VOICE OVER (NICKELODEON, CARTOON NETWORK)
                     </a>
@@ -74,6 +77,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bullet-link w-full text-left transition-all duration-200"
+                      onClick={() => trackExternalLinkClick("https://www.forbes.com/profile/kaikaku/")}
                     >
                       FORBES 30U30 LIST
                     </a>
@@ -84,6 +88,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bullet-link w-full text-left transition-all duration-200"
+                      onClick={() => trackExternalLinkClick("https://www.telegraph.co.uk/business/2024/08/25/would-you-eat-meal-cooked-robot-meet-machines-taking-over/")}
                     >
                       KAIKAKU IN THE NEWS
                     </a>
@@ -94,6 +99,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bullet-link w-full text-left transition-all duration-200"
+                      onClick={() => trackExternalLinkClick("https://powerboat.world/news/255273/Reading-Rumble-2022-at-Burghfield")}
                     >
                       READING RUMBLE 2022 VICTORS
                     </a>
@@ -132,6 +138,7 @@ I studied Mechanical Engineering at Imperial College London, with a specialisati
                     aria-label="LinkedIn Profile"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackExternalLinkClick("https://www.linkedin.com/in/ivantregear")}
                   >
                     <SiLinkedin />
                   </a>
@@ -141,6 +148,7 @@ I studied Mechanical Engineering at Imperial College London, with a specialisati
                     aria-label="GitHub Profile"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackExternalLinkClick("https://github.com/ITregear")}
                   >
                     <SiGithub />
                   </a>
@@ -150,6 +158,7 @@ I studied Mechanical Engineering at Imperial College London, with a specialisati
                     aria-label="X (Twitter) Profile"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackExternalLinkClick("https://x.com/IvanTregear")}
                   >
                     <SiX />
                   </a>
