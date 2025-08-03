@@ -63,8 +63,13 @@ export default function TabsNav() {
     // Add more tabs here if needed
   ];
 
-  // Find selected tab index
-  const selectedIdx = tabs.findIndex(tab => tab.href === location);
+  // Find selected tab index - handle article pages as thoughts
+  const selectedIdx = tabs.findIndex(tab => {
+    if (tab.href === location) return true;
+    // If we're on an article page (starts with /thoughts/), treat it as thoughts
+    if (tab.href === "/thoughts" && location.startsWith("/thoughts/")) return true;
+    return false;
+  });
 
   const folderTabBg = "#e2cfa5";
   const pageBg = "hsl(var(--vintage-beige))";

@@ -57,7 +57,7 @@ export default function Header() {
               <img 
                 src={planeImage} 
                 alt="Vintage aircraft blueprint - click to cycle through different images" 
-                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-stamp-red focus:ring-opacity-50" 
+                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stamp-red focus-visible:ring-opacity-50" 
                 onClick={handleClick}
                 onKeyDown={handleKeyDown}
                 tabIndex={0}
@@ -83,7 +83,7 @@ export default function Header() {
               <img 
                 src={planeImage} 
                 alt="Vintage aircraft blueprint - click to cycle through different images" 
-                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-stamp-red focus:ring-opacity-50" 
+                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-stamp-red focus-visible:ring-opacity-50" 
                 onClick={handleClick}
                 onKeyDown={handleKeyDown}
                 tabIndex={0}
