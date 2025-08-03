@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useLocation } from "wouter";
 import Header from "@/components/header";
 import TabsNav from "@/components/ui/tabs";
-import * as Accordion from "@radix-ui/react-accordion";
+import SEO from "@/components/seo";
 import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 import path from "path";
@@ -15,6 +16,8 @@ type Post = {
   title: string;
   date: string;
   content: string;
+  slug: string;
+  excerpt: string;
 };
 
 function usePosts(): Post[] {
@@ -22,22 +25,23 @@ function usePosts(): Post[] {
 
   React.useEffect(() => {
     const fetchPosts = async () => {
-      const postsPromises = Object.entries(markdownFiles).map(async ([path, resolver]) => {
+      const postsPromises = Object.entries(markdownFiles).map(async ([filePath, resolver]) => {
         const rawContent = await (resolver as () => Promise<string>)();
         const { attributes, body } = fm(rawContent);
 
-        // This regex will find all markdown image tags and replace their paths
-        const processedBody = body.replace(/!\[(.*?)\]\(\.\/images\/(.*?)\)/g, (match, altText, imageName) => {
-          // In production, we need to construct the path relative to the final build directory.
-          // This path might need to be adjusted depending on how Vite processes your assets.
-          const imageUrl = new URL(`/src/assets/thoughts/images/${imageName}`, import.meta.url).href;
-          return `![${altText}](${imageUrl})`;
-        });
+        // Extract slug from file path
+        const slug = filePath.split('/').pop()?.replace(/\.md$/, '') || '';
+
+        // Create excerpt from first paragraph
+        const firstParagraph = body.split('\n\n')[0].replace(/[#*`]/g, '').trim();
+        const excerpt = firstParagraph.length > 200 ? firstParagraph.substring(0, 200) + '...' : firstParagraph;
 
         return {
-          title: (attributes as any).title || path.split('/').pop()?.replace(/\.md$/, '') || 'Untitled',
+          title: (attributes as any).title || slug.replace(/-/g, ' '),
           date: (attributes as any).date || '',
-          content: processedBody,
+          content: body,
+          slug,
+          excerpt
         };
       });
 
@@ -54,68 +58,65 @@ function usePosts(): Post[] {
 
 export default function Thoughts() {
   const posts = usePosts();
-
-  // Custom image and markdown renderers for markdown
-  const markdownComponents = {
-    img: (props: any) => {
-      // The URL should now be correctly resolved by the 'usePosts' hook
-      return <img {...props} alt={props.alt} />;
-    },
-    h1: (props: any) => <h1 className="text-2xl font-bold mt-8 mb-4 text-typewriter-dark">{props.children}</h1>,
-    h2: (props: any) => <h2 className="text-xl font-bold mt-7 mb-3 text-typewriter-dark">{props.children}</h2>,
-    h3: (props: any) => <h3 className="text-lg font-bold mt-6 mb-2 text-typewriter-dark">{props.children}</h3>,
-    ul: (props: any) => <ul className="list-disc pl-6 my-3">{props.children}</ul>,
-    ol: (props: any) => <ol className="list-decimal pl-6 my-3">{props.children}</ol>,
-    li: (props: any) => <li className="mb-2">{props.children}</li>,
-    p: (props: any) => <p className="mb-4 text-typewriter-medium">{props.children}</p>,
-    a: (props: any) => (
-      <a
-        href={props.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline hover:text-stamp-red transition-colors"
-        onClick={() => trackExternalLinkClick(props.href)}
-      >
-        {props.children}
-      </a>
-    ),
-    blockquote: (props: any) => (
-      <blockquote className="border-l-4 border-stamp-red pl-4 italic my-4 py-1 bg-white/40 rounded">
-        {props.children}
-      </blockquote>
-    ),
-  };
+  const [, setLocation] = useLocation();
 
   return (
     <div className="bg-vintage-beige text-typewriter-dark font-typewriter min-h-screen">
+      <SEO 
+        title="Thoughts - Ivan Tregear"
+        description="Articles and thoughts on robotics, engineering, and entrepreneurship by Ivan Tregear, CTO at KAIKAKU."
+        url="https://ivantregear.com/thoughts"
+        type="website"
+      />
       <Header />
       <TabsNav />
       <main className="container mx-auto px-6 pt-12 pb-24">
-        <div className="max-w-5xl w-full mx-auto">
-          <h2 className="text-2xl font-bold mb-8 typewriter-text text-center">Thoughts</h2>
+        <div className="max-w-4xl w-full mx-auto">
+          <h2 className="text-3xl font-bold mb-8 typewriter-text text-center">Thoughts</h2>
           {posts.length === 0 ? (
             <div className="text-typewriter-medium typewriter-text text-center">No blog posts yet.</div>
           ) : (
-            <Accordion.Root type="single" collapsible className="w-full space-y-4">
-              {posts.map((post, idx) => (
-                <Accordion.Item key={post.title} value={post.title} className="w-full bg-transparent border-none shadow-none">
-                  <Accordion.Header>
-                    <Accordion.Trigger className="w-full px-6 py-4 font-semibold text-lg typewriter-text transition-all bg-transparent border-none flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-stamp-red">
-                      <span className="flex-1 min-w-0 text-left break-words whitespace-normal">{post.title}</span>
-                      <span className="ml-4 text-base font-normal text-typewriter-medium flex-shrink-0 text-right w-32">{post.date}</span>
-                      <svg className="ml-2 h-6 w-6 transition-transform duration-200 flex-shrink-0" style={{ color: 'hsl(var(--stamp-red))' }} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </Accordion.Trigger>
-                  </Accordion.Header>
-                  <Accordion.Content className="px-6 pb-6 pt-2 animate-fadeIn bg-transparent border-none">
-                    <div className="font-blog-mono text-typewriter-medium max-w-2xl mx-auto leading-relaxed text-[1.08rem]">
-                      <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
+            <div className="space-y-8">
+              {posts.map((post) => (
+                <article 
+                  key={post.slug} 
+                  className="bg-white/60 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  onClick={() => setLocation(`/thoughts/${post.slug}`)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setLocation(`/thoughts/${post.slug}`);
+                    }
+                  }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Read article: ${post.title}`}
+                >
+                  <header className="mb-4">
+                    <h3 className="text-xl font-bold text-typewriter-dark mb-2 hover:text-stamp-red transition-colors">
+                      {post.title}
+                    </h3>
+                    {post.date && (
+                      <time className="text-typewriter-medium text-sm" dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </time>
+                    )}
+                  </header>
+                  
+                  <div className="text-typewriter-medium leading-relaxed">
+                    <p>{post.excerpt}</p>
+                  </div>
+                  
+                  <div className="mt-4 text-stamp-red text-sm font-medium">
+                    Read more →
+                  </div>
+                </article>
               ))}
-            </Accordion.Root>
+            </div>
           )}
         </div>
       </main>

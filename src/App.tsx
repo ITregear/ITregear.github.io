@@ -9,6 +9,7 @@ import { TooltipProvider } from "@/components/ui/tooltip"; // Tooltip context pr
 import Home from "@/pages/home"; // Home page component
 import NotFound from "@/pages/not-found"; // 404 page component
 import Thoughts from "@/pages/thoughts";
+import Article from "@/pages/article";
 import TopSecret from "@/pages/top-secret";
 import { useEffect } from "react";
 import posthog from "posthog-js";
@@ -20,6 +21,7 @@ function Router() {
       {/* Home route */}
       <Route path="/" component={Home} />
       <Route path="/thoughts" component={Thoughts} />
+      <Route path="/thoughts/:slug" component={Article} />
       <Route path="/top-secret" component={TopSecret} />
       {/* Catch-all route for 404s */}
       <Route component={NotFound} />

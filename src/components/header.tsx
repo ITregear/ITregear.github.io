@@ -30,10 +30,17 @@ export default function Header() {
     });
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
   const planeImage = images[index];
 
   return (
-    <header className="container mx-auto px-6 py-8 pt-[0px] pb-[0px]">
+    <header className="container mx-auto px-6 py-8 pt-[0px] pb-[0px]" role="banner">
       <div className="max-w-5xl mx-auto">
         {/* Desktop Layout: Name and Plane Side by Side */}
         <div className="hidden md:flex md:items-center md:justify-between md:mb-6">
@@ -41,7 +48,7 @@ export default function Header() {
             <h1 className="text-4xl lg:text-5xl font-bold typewriter-text text-left mb-4">
               IVAN TREGEAR
             </h1>
-            <div className="h-1 w-32 bg-stamp-red opacity-60"></div>
+            <div className="h-1 w-32 bg-stamp-red opacity-60" aria-hidden="true"></div>
           </div>
           
           {/* Plane Image - Desktop */}
@@ -49,9 +56,13 @@ export default function Header() {
             {planeImage && (
               <img 
                 src={planeImage} 
-                alt="Vintage aircraft blueprint" 
-                className="max-w-full h-auto opacity-90 cursor-pointer" 
+                alt="Vintage aircraft blueprint - click to cycle through different images" 
+                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-stamp-red focus:ring-opacity-50" 
                 onClick={handleClick}
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+                role="button"
+                aria-label="Cycle through hero images"
                 title="Click to cycle image"
                 style={{userSelect: 'none'}}
                 draggable={false}
@@ -64,16 +75,20 @@ export default function Header() {
           <h1 className="text-3xl font-bold typewriter-text text-left mb-6">
             IVAN TREGEAR
           </h1>
-          <div className="h-1 w-24 bg-stamp-red opacity-60 mb-4"></div>
+          <div className="h-1 w-24 bg-stamp-red opacity-60 mb-4" aria-hidden="true"></div>
           
           {/* Plane Image - Mobile */}
           <div className="mb-4 flex justify-center">
             {planeImage && (
               <img 
                 src={planeImage} 
-                alt="Vintage aircraft blueprint" 
-                className="max-w-full h-auto opacity-90 cursor-pointer" 
+                alt="Vintage aircraft blueprint - click to cycle through different images" 
+                className="max-w-full h-auto opacity-90 cursor-pointer focus:outline-none focus:ring-2 focus:ring-stamp-red focus:ring-opacity-50" 
                 onClick={handleClick}
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+                role="button"
+                aria-label="Cycle through hero images"
                 title="Click to cycle image"
                 style={{userSelect: 'none'}}
                 draggable={false}
