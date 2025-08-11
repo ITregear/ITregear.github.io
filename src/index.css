@@ -191,6 +191,113 @@
       right: -5px;
       bottom: -5px;
     }
+    
+    /* Mobile-specific improvements */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Better mobile spacing for main content */
+    main {
+      padding-top: 0.75rem;
+    }
+    
+    /* Improve mobile tab readability */
+    .font-typewriter {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+    
+    /* Better mobile image sizing */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Mobile-specific document section improvements */
+    .document-section {
+      margin-bottom: 1rem;
+    }
+    
+    /* Better mobile text sizing */
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+    
+    /* Mobile-friendly bullet points */
+    .bullet-point {
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Mobile social icons spacing */
+    .social-icon {
+      font-size: 1.5rem;
+    }
+    
+    /* Mobile markdown content improvements */
+    .markdown-content {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    /* Mobile-friendly blockquotes */
+    blockquote {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    
+    /* Mobile list improvements */
+    ul, ol {
+      margin-left: 0.5rem;
+    }
+    
+    /* Mobile heading spacing */
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    
+    /* Mobile paragraph spacing */
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Ensure consistent font sizing for all markdown content */
+    .markdown-content ul,
+    .markdown-content ol,
+    .markdown-content li,
+    .markdown-content p,
+    .markdown-content blockquote {
+      font-size: inherit;
+    }
+    
+    /* Override any default list styling that might affect font size */
+    ul, ol {
+      font-size: inherit;
+    }
+    
+    li {
+      font-size: inherit;
+    }
+    
+    /* Ensure all markdown content has consistent font sizing */
+    article ul,
+    article ol,
+    article li,
+    article p,
+    article blockquote,
+    article a {
+      font-size: inherit !important;
+    }
+    
+    /* Override any browser default list styling */
+    .font-blog-mono ul,
+    .font-blog-mono ol,
+    .font-blog-mono li {
+      font-size: inherit;
+    }
   }
 
   .bullet-link {

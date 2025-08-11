@@ -98,7 +98,7 @@ export default function TabsNav() {
     }
   }, [location, tabs.length]);
 
-  // SVG path logic
+  // SVG path logic - simplified for mobile
   const tabHeight = 48; // px, matches py-3 and font size
   const angle = 60; // degrees
   const angleRad = (angle * Math.PI) / 180;
@@ -149,7 +149,7 @@ export default function TabsNav() {
   }
 
   return (
-    <div className="w-full flex justify-center mb-8">
+    <div className="w-full flex justify-center mb-6 md:mb-8">
       <div className="max-w-5xl w-full mx-auto relative">
         <div
           ref={tabContainerRef}
@@ -161,7 +161,7 @@ export default function TabsNav() {
               <span
                 key={tab.href}
                 ref={el => tabRefs.current[i] = el as HTMLAnchorElement}
-                className={`flex-1 px-2 py-3 font-typewriter text-typewriter-dark transition-all duration-150 text-lg select-none text-center opacity-60 cursor-not-allowed ${i === selectedIdx ? "text-stamp-red" : ""}`}
+                className={`flex-1 px-2 py-2 md:py-3 font-typewriter text-typewriter-dark transition-all duration-150 text-base md:text-lg select-none text-center opacity-60 cursor-not-allowed ${i === selectedIdx ? "text-stamp-red" : ""}`}
                 style={{
                   zIndex: i === selectedIdx ? 2 : 1,
                   position: "relative",
@@ -182,7 +182,7 @@ export default function TabsNav() {
                 key={tab.href}
                 ref={el => tabRefs.current[i] = el}
                 href={tab.href}
-                className={`flex-1 px-2 py-3 font-typewriter text-typewriter-dark transition-all duration-150 text-lg select-none text-center ${i === selectedIdx ? "text-stamp-red" : ""}`}
+                className={`flex-1 px-2 py-2 md:py-3 font-typewriter text-typewriter-dark transition-all duration-150 text-base md:text-lg select-none text-center ${i === selectedIdx ? "text-stamp-red" : ""}`}
                 style={{
                   zIndex: i === selectedIdx ? 2 : 1,
                   position: "relative",
@@ -199,11 +199,12 @@ export default function TabsNav() {
               </a>
             )
           ))}
-          {/* SVG underline/outline */}
+          {/* SVG underline/outline - hidden on mobile for simplicity */}
           <svg
             width="100%"
             height={svgHeight}
             viewBox={`0 0 ${tabDims.containerWidth} ${svgHeight}`}
+            className="hidden md:block"
             style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none", zIndex: 0, width: '100%' }}
             preserveAspectRatio="none"
           >
@@ -215,6 +216,19 @@ export default function TabsNav() {
               strokeLinejoin="round"
             />
           </svg>
+          
+          {/* Mobile-friendly selected tab indicator */}
+          <div className="md:hidden absolute bottom-0 left-0 w-full h-1 bg-muted">
+            {selectedIdx !== -1 && (
+              <div 
+                className="h-full bg-stamp-red transition-all duration-300 ease-in-out"
+                style={{
+                  width: tabDims.tabs[selectedIdx]?.width || 0,
+                  transform: `translateX(${tabDims.tabs[selectedIdx]?.left || 0}px)`,
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

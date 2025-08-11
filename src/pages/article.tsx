@@ -66,28 +66,28 @@ export default function Article() {
 
   const markdownComponents = {
     img: (props: any) => {
-      return <img {...props} alt={props.alt} className="max-w-full h-auto my-4" />;
+      return <img {...props} alt={props.alt} className="max-w-full h-auto my-3 md:my-4" />;
     },
-    h1: (props: any) => <h1 className="text-3xl font-bold mt-8 mb-6 text-typewriter-dark">{props.children}</h1>,
-    h2: (props: any) => <h2 className="text-2xl font-bold mt-7 mb-4 text-typewriter-dark">{props.children}</h2>,
-    h3: (props: any) => <h3 className="text-xl font-bold mt-6 mb-3 text-typewriter-dark">{props.children}</h3>,
-    ul: (props: any) => <ul className="list-disc pl-6 my-4">{props.children}</ul>,
-    ol: (props: any) => <ol className="list-decimal pl-6 my-4">{props.children}</ol>,
-    li: (props: any) => <li className="mb-2">{props.children}</li>,
-    p: (props: any) => <p className="mb-6 text-typewriter-medium leading-relaxed">{props.children}</p>,
+    h1: (props: any) => <h1 className="text-2xl md:text-3xl font-bold mt-6 md:mt-8 mb-4 md:mb-6 text-typewriter-dark">{props.children}</h1>,
+    h2: (props: any) => <h2 className="text-xl md:text-2xl font-bold mt-5 md:mt-7 mb-3 md:mb-4 text-typewriter-dark">{props.children}</h2>,
+    h3: (props: any) => <h3 className="text-lg md:text-xl font-bold mt-4 md:mt-6 mb-2 md:mb-3 text-typewriter-dark">{props.children}</h3>,
+    ul: (props: any) => <ul className="list-disc pl-4 md:pl-6 my-3 md:my-4 text-base md:text-lg">{props.children}</ul>,
+    ol: (props: any) => <ol className="list-decimal pl-4 md:pl-6 my-3 md:my-4 text-base md:text-lg">{props.children}</ol>,
+    li: (props: any) => <li className="mb-1 md:mb-2 text-base md:text-lg">{props.children}</li>,
+    p: (props: any) => <p className="mb-4 md:mb-6 text-typewriter-medium leading-relaxed text-base md:text-lg">{props.children}</p>,
     a: (props: any) => (
       <a
         href={props.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline hover:text-stamp-red transition-colors"
+        className="underline hover:text-stamp-red transition-colors text-base md:text-lg"
         onClick={() => trackExternalLinkClick(props.href)}
       >
         {props.children}
       </a>
     ),
     blockquote: (props: any) => (
-      <blockquote className="border-l-4 border-stamp-red pl-6 italic my-6 py-2 bg-white/40 rounded">
+      <blockquote className="border-l-4 border-stamp-red pl-4 md:pl-6 italic my-4 md:my-6 py-2 bg-white/40 rounded text-base md:text-lg">
         {props.children}
       </blockquote>
     ),
@@ -104,13 +104,13 @@ export default function Article() {
         />
         <Header />
         <TabsNav />
-        <main className="container mx-auto px-6 pt-12 pb-24">
+        <main className="container mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
-            <p className="text-typewriter-medium mb-8">The article you're looking for doesn't exist.</p>
+            <h1 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Article Not Found</h1>
+            <p className="text-typewriter-medium mb-6 md:mb-8 text-sm md:text-base">The article you're looking for doesn't exist.</p>
             <button 
               onClick={() => setLocation('/thoughts')}
-              className="px-6 py-3 bg-stamp-red text-white rounded hover:bg-stamp-red/90 transition-colors"
+              className="px-4 md:px-6 py-2 md:py-3 bg-stamp-red text-white rounded hover:bg-stamp-red/90 transition-colors text-sm md:text-base"
             >
               Back to Thoughts
             </button>
@@ -132,12 +132,12 @@ export default function Article() {
       />
       <Header />
       <TabsNav />
-      <main className="container mx-auto px-6 pt-12 pb-24">
+      <main className="container mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto">
-          <nav className="mb-8">
+          <nav className="mb-6 md:mb-8">
             <button 
               onClick={() => setLocation('/thoughts')}
-              className="text-stamp-red hover:text-stamp-red/80 transition-colors flex items-center"
+              className="text-stamp-red hover:text-stamp-red/80 transition-colors flex items-center text-sm md:text-base"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -146,11 +146,11 @@ export default function Article() {
             </button>
           </nav>
           
-          <article className="bg-white/60 rounded-lg p-8 shadow-sm">
-            <header className="mb-8">
-              <h1 className="text-4xl font-bold mb-4 text-typewriter-dark">{article.title}</h1>
+          <article className="bg-white/60 rounded-lg p-5 md:p-8 shadow-sm">
+            <header className="mb-6 md:mb-8">
+              <h1 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-typewriter-dark">{article.title}</h1>
               {article.date && (
-                <time className="text-typewriter-medium text-sm" dateTime={article.date}>
+                <time className="text-typewriter-medium text-xs md:text-sm" dateTime={article.date}>
                   {new Date(article.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -160,7 +160,7 @@ export default function Article() {
               )}
             </header>
             
-            <div className="font-blog-mono text-typewriter-medium leading-relaxed text-lg">
+            <div className="font-blog-mono text-typewriter-medium leading-relaxed text-base md:text-lg">
               <ReactMarkdown components={markdownComponents}>{article.content}</ReactMarkdown>
             </div>
           </article>

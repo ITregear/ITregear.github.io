@@ -26,13 +26,13 @@ export default function Home() {
       <Header />
       <TabsNav />
       {/* Main Content */}
-      <main className="container mx-auto px-6 pt-[24px] pb-[24px]" role="main">
+      <main className="container mx-auto px-6 pt-[12px] md:pt-[24px] pb-[24px]" role="main">
         {/* Bento Box 2x2 Grid */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 min-h-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6 min-h-[400px] md:min-h-[600px]">
             
             {/* Left Column: Personnel File + Reference Materials */}
-            <div className="md:col-span-2 flex flex-col gap-6">
+            <div className="md:col-span-2 flex flex-col gap-4 md:gap-6">
               {/* Top Left: Personnel File */}
               <DocumentSection 
                 title="PERSONNEL FILE" 
@@ -121,7 +121,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: Operational Summary + Comms */}
-            <div className="md:col-span-3 flex flex-col gap-6">
+            <div className="md:col-span-3 flex flex-col gap-4 md:gap-6">
               {/* Top Right: Operational Summary */}
               <DocumentSection 
                 title="SUMMARY" 
@@ -185,7 +185,7 @@ I studied Mechanical Engineering at Imperial College London, with a specialisati
       </main>
       {/* Footer - positioned outside main content flow */}
       <div className="w-full">
-        <footer className="container mx-auto px-6 py-8 border-t border-document-border mt-16" role="contentinfo">
+        <footer className="container mx-auto px-6 py-6 md:py-8 border-t border-document-border mt-8 md:mt-16" role="contentinfo">
           <div className="text-center text-xs text-typewriter-medium typewriter-text">
             <div className="mb-2">
               CONFIDENTIAL PERSONNEL FILE • AUTHORIZED ACCESS ONLY

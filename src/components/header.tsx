@@ -11,7 +11,7 @@ function getNextIndex(current: number) {
 function getCurrentIndex() {
   const stored = window.localStorage.getItem('heroImageIndex');
   const current = stored ? parseInt(stored, 10) : 0;
-  return isNaN(current) ? 0 : current;
+  return isNaN(current) ? 0 : 0;
 }
 
 export default function Header() {
@@ -40,7 +40,7 @@ export default function Header() {
   const planeImage = images[index];
 
   return (
-    <header className="container mx-auto px-6 py-8 pt-[0px] pb-[0px]" role="banner">
+    <header className="container mx-auto px-6 py-8 pt-[24px] md:pt-[0px] pb-[0px]" role="banner">
       <div className="max-w-5xl mx-auto">
         {/* Desktop Layout: Name and Plane Side by Side */}
         <div className="hidden md:flex md:items-center md:justify-between md:mb-6">
@@ -75,10 +75,10 @@ export default function Header() {
           <h1 className="text-3xl font-bold typewriter-text text-left mb-6">
             IVAN TREGEAR
           </h1>
-          <div className="h-1 w-24 bg-stamp-red opacity-60 mb-4" aria-hidden="true"></div>
+          <div className="h-1 w-24 bg-stamp-red opacity-60 mb-6" aria-hidden="true"></div>
           
           {/* Plane Image - Mobile */}
-          <div className="mb-4 flex justify-center">
+          <div className="mb-6 flex justify-center">
             {planeImage && (
               <img 
                 src={planeImage} 

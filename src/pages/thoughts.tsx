@@ -70,17 +70,17 @@ export default function Thoughts() {
       />
       <Header />
       <TabsNav />
-      <main className="container mx-auto px-6 pt-12 pb-24">
+      <main className="container mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
         <div className="max-w-4xl w-full mx-auto">
-          <h2 className="text-3xl font-bold mb-8 typewriter-text text-center">Thoughts</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 typewriter-text text-center">Thoughts</h2>
           {posts.length === 0 ? (
             <div className="text-typewriter-medium typewriter-text text-center">No blog posts yet.</div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {posts.map((post) => (
                 <article 
                   key={post.slug} 
-                  className="bg-white/60 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  className="bg-white/60 rounded-lg p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                   onClick={() => setLocation(`/thoughts/${post.slug}`)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -92,12 +92,12 @@ export default function Thoughts() {
                   role="button"
                   aria-label={`Read article: ${post.title}`}
                 >
-                  <header className="mb-4">
-                    <h3 className="text-xl font-bold text-typewriter-dark mb-2 hover:text-stamp-red transition-colors">
+                  <header className="mb-3 md:mb-4">
+                    <h3 className="text-lg md:text-xl font-bold text-typewriter-dark mb-2 hover:text-stamp-red transition-colors">
                       {post.title}
                     </h3>
                     {post.date && (
-                      <time className="text-typewriter-medium text-sm" dateTime={post.date}>
+                      <time className="text-typewriter-medium text-xs md:text-sm" dateTime={post.date}>
                         {new Date(post.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
@@ -107,11 +107,11 @@ export default function Thoughts() {
                     )}
                   </header>
                   
-                  <div className="text-typewriter-medium leading-relaxed">
+                  <div className="text-typewriter-medium leading-relaxed text-sm md:text-base">
                     <p>{post.excerpt}</p>
                   </div>
                   
-                  <div className="mt-4 text-stamp-red text-sm font-medium">
+                  <div className="mt-3 md:mt-4 text-stamp-red text-xs md:text-sm font-medium">
                     Read more →
                   </div>
                 </article>

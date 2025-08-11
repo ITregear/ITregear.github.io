@@ -12,7 +12,7 @@ interface DocumentSectionProps {
 export default function DocumentSection({ title, children, footer, className = "" }: DocumentSectionProps) {
   return (
     // Main container with styling and optional custom classes
-    <div className={`grid-section document-shadow p-6 bg-white/30 flex flex-col h-full ${className}`}>
+    <div className={`grid-section document-shadow p-4 md:p-6 bg-white/30 flex flex-col h-full ${className}`}>
       {/* Section header with title and divider */}
       <div className="classified-header mb-4">
         <h2 className="text-lg font-bold text-stamp-red mb-2">{title}</h2>
