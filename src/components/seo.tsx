@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
   title?: string;
@@ -21,132 +21,96 @@ export default function SEO({
   modifiedTime,
   author = "Ivan Tregear"
 }: SEOProps) {
-  useEffect(() => {
-    // Update document title
-    document.title = title;
+  const structuredData = type === 'article' ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": image,
+    "author": {
+      "@type": "Person",
+      "name": author
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Ivan Tregear"
+    },
+    "datePublished": publishedTime,
+    "dateModified": modifiedTime || publishedTime,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    }
+  } : {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ivan Tregear",
+    "jobTitle": "Chief Technology Officer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "KAIKAKU"
+    },
+    "url": "https://ivantregear.com/",
+    "sameAs": [
+      "https://www.linkedin.com/in/ivantregear",
+      "https://github.com/ITregear",
+      "https://x.com/IvanTregear"
+    ]
+  };
 
-    // Update or create meta tags
-    const updateMetaTag = (name: string, content: string, property?: string) => {
-      const selector = property ? `meta[property="${property}"]` : `meta[name="${name}"]`;
-      let meta = document.querySelector(selector) as HTMLMetaElement;
+  return (
+    <Helmet>
+      {/* Primary Meta Tags */}
+      <title>{title}</title>
+      <meta name="title" content={title} />
+      <meta name="description" content={description} />
+      <meta name="author" content={author} />
+      <meta name="keywords" content="Ivan Tregear, engineer, entrepreneur, robotics, automation, KAIKAKU, Fusion, robot" />
+      <meta name="robots" content="index, follow" />
       
-      if (!meta) {
-        meta = document.createElement('meta');
-        if (property) {
-          meta.setAttribute('property', property);
-        } else {
-          meta.setAttribute('name', name);
-        }
-        document.head.appendChild(meta);
-      }
+      {/* Open Graph / Facebook */}
+      <meta property="og:site_name" content="Ivan Tregear" />
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:locale" content="en_US" />
       
-      meta.setAttribute('content', content);
-    };
-
-    // Primary meta tags
-    updateMetaTag('title', title);
-    updateMetaTag('description', description);
-    updateMetaTag('author', author);
-
-    // Open Graph tags
-    updateMetaTag('og:site_name', 'Ivan Tregear', 'og:site_name');
-    updateMetaTag('og:title', title, 'og:title');
-    updateMetaTag('og:description', description, 'og:description');
-    updateMetaTag('og:image', image, 'og:image');
-    updateMetaTag('og:image:width', '1200', 'og:image:width');
-    updateMetaTag('og:image:height', '630', 'og:image:height');
-    updateMetaTag('og:url', url, 'og:url');
-    updateMetaTag('og:type', type, 'og:type');
-    updateMetaTag('og:locale', 'en_US', 'og:locale');
-
-    // Twitter tags
-    updateMetaTag('twitter:card', 'summary_large_image', 'twitter:card');
-    updateMetaTag('twitter:site', '@IvanTregear', 'twitter:site');
-    updateMetaTag('twitter:creator', '@IvanTregear', 'twitter:creator');
-    updateMetaTag('twitter:title', title, 'twitter:title');
-    updateMetaTag('twitter:description', description, 'twitter:description');
-    updateMetaTag('twitter:image', image, 'twitter:image');
-    updateMetaTag('twitter:url', url, 'twitter:url');
-
-    // Article specific tags
-    if (type === 'article' && publishedTime) {
-      updateMetaTag('article:published_time', publishedTime, 'article:published_time');
-    }
-    if (type === 'article' && modifiedTime) {
-      updateMetaTag('article:modified_time', modifiedTime, 'article:modified_time');
-    }
-    if (type === 'article' && author) {
-      updateMetaTag('article:author', author, 'article:author');
-    }
-
-    // Update canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', url);
-
-    // Add structured data
-    const addStructuredData = (data: any) => {
-      // Remove existing structured data
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-
-      // Add new structured data
-      const script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      script.textContent = JSON.stringify(data);
-      document.head.appendChild(script);
-    };
-
-    if (type === 'article') {
-      // Article structured data
-      addStructuredData({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": title,
-        "description": description,
-        "image": image,
-        "author": {
-          "@type": "Person",
-          "name": author
-        },
-        "publisher": {
-          "@type": "Person",
-          "name": "Ivan Tregear"
-        },
-        "datePublished": publishedTime,
-        "dateModified": modifiedTime || publishedTime,
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": url
-        }
-      });
-    } else {
-      // Website structured data
-      addStructuredData({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Ivan Tregear",
-        "jobTitle": "Chief Technology Officer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "KAIKAKU"
-        },
-        "url": "https://ivantregear.com/",
-        "sameAs": [
-          "https://www.linkedin.com/in/ivantregear",
-          "https://github.com/ITregear",
-          "https://x.com/IvanTregear"
-        ]
-      });
-    }
-
-  }, [title, description, image, url, type, publishedTime, modifiedTime, author]);
-
-  return null;
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:site" content="@IvanTregear" />
+      <meta property="twitter:creator" content="@IvanTregear" />
+      <meta property="twitter:url" content={url} />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
+      <meta property="twitter:image" content={image} />
+      
+      {/* Article specific tags */}
+      {type === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {type === 'article' && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {type === 'article' && author && (
+        <meta property="article:author" content={author} />
+      )}
+      
+      {/* Canonical URL */}
+      <link rel="canonical" href={url} />
+      
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+      
+      {/* Additional SEO */}
+      <meta name="theme-color" content="#8B4513" />
+      <meta name="color-scheme" content="light" />
+      <meta name="supported-color-schemes" content="light" />
+    </Helmet>
+  );
 } 

@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 import { trackExternalLinkClick } from "@/lib/utils";
 import { getMarkdownComponents, createCleanDescription } from "@/lib/markdown";
+import { getThoughtsImageUrl } from "@/lib/images";
 
 // Vite dynamic import for all markdown files in thoughts
 const markdownFiles = import.meta.glob("/src/assets/thoughts/*.md", { query: "?raw", import: "default" });
@@ -35,10 +36,15 @@ function useArticle(slug: string): Article | null {
         const rawContent = await (resolver as () => Promise<string>)();
         const { attributes, body } = fm(rawContent);
 
-        // Process image paths - convert relative paths to absolute URLs
+        // Process image paths - convert relative paths to Vite-imported URLs
         const processedBody = body.replace(/!\[(.*?)\]\(\.\/images\/(.*?)\)/g, (match, altText, imageName) => {
-          // Use Vite's asset handling for proper path resolution
-          return `![${altText}](/src/assets/thoughts/images/${imageName})`;
+          const imageUrl = getThoughtsImageUrl(imageName);
+          if (imageUrl) {
+            return `![${altText}](${imageUrl})`;
+          }
+          // Fallback to original if image not found
+          console.warn(`Image not found: ${imageName}`);
+          return match;
         });
 
         setArticle({
@@ -61,16 +67,19 @@ function useArticle(slug: string): Article | null {
 
 // Helper function to extract first image from markdown content
 function extractFirstImage(content: string): string | null {
-  // Look for images in the format ![alt](/src/assets/thoughts/images/filename)
-  const imageMatch = content.match(/!\[.*?\]\(\/src\/assets\/thoughts\/images\/(.*?)\)/);
-  if (imageMatch) {
-    return `https://ivantregear.com/src/assets/thoughts/images/${imageMatch[1]}`;
+  // Look for images with Vite-imported URLs (after processing)
+  const viteImageMatch = content.match(/!\[.*?\]\((\/assets\/[^)]+)\)/);
+  if (viteImageMatch) {
+    return `https://ivantregear.com${viteImageMatch[1]}`;
   }
   
   // Look for original format ![alt](./images/filename) in case not processed yet
   const relativeImageMatch = content.match(/!\[.*?\]\(\.\/images\/(.*?)\)/);
   if (relativeImageMatch) {
-    return `https://ivantregear.com/src/assets/thoughts/images/${relativeImageMatch[1]}`;
+    const imageUrl = getThoughtsImageUrl(relativeImageMatch[1]);
+    if (imageUrl) {
+      return `https://ivantregear.com${imageUrl}`;
+    }
   }
   
   // Look for any other image format
@@ -81,8 +90,10 @@ function extractFirstImage(content: string): string | null {
     if (imagePath.startsWith('http')) {
       return imagePath;
     }
-    // Otherwise, construct the full URL
-    return `https://ivantregear.com${imagePath}`;
+    // If it's a Vite asset path, prepend domain
+    if (imagePath.startsWith('/')) {
+      return `https://ivantregear.com${imagePath}`;
+    }
   }
   
   return null;
