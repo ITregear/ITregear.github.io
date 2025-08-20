@@ -7,5 +7,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function trackExternalLinkClick(href: string, context?: Record<string, any>) {
-  posthog.capture('external_link_click', { href, ...context });
+  // Only track if PostHog is initialized
+  if (typeof window !== 'undefined' && window.posthog) {
+    posthog.capture('external_link_click', { href, ...context });
+  }
 }

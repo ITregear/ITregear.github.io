@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "wouter";
 
 // Dynamically import all PNG images from the hero-images folder
 const imageModules = import.meta.glob("@/assets/hero-images/*.png", { eager: true, import: 'default' });
@@ -11,16 +12,20 @@ function getNextIndex(current: number) {
 function getCurrentIndex() {
   const stored = window.localStorage.getItem('heroImageIndex');
   const current = stored ? parseInt(stored, 10) : 0;
-  return isNaN(current) ? 0 : 0;
+  return isNaN(current) ? 0 : current;
 }
 
 export default function Header() {
+  const [location] = useLocation();
   const [index, setIndex] = React.useState(() => {
     if (typeof window !== 'undefined') {
       return getCurrentIndex();
     }
     return 0;
   });
+
+  // Hide header content on thoughts pages
+  const isThoughtsPage = location.startsWith('/thoughts');
 
   const handleClick = () => {
     setIndex(i => {
@@ -38,6 +43,18 @@ export default function Header() {
   };
 
   const planeImage = images[index];
+
+  // Return minimal header for thoughts pages
+  if (isThoughtsPage) {
+    return (
+      <header className="container mx-auto px-6 py-4" role="banner">
+        <div className="max-w-5xl mx-auto">
+          {/* Minimal header for thoughts pages */}
+          <div className="h-1 w-16 bg-stamp-red opacity-60 mx-auto" aria-hidden="true"></div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="container mx-auto px-6 py-8 pt-[24px] md:pt-[0px] pb-[0px]" role="banner">

@@ -33,7 +33,10 @@ function Router() {
 function App() {
   const [location] = useLocation();
   useEffect(() => {
-    posthog.capture("$pageview");
+    // Only track pageviews if PostHog is initialized
+    if (typeof window !== 'undefined' && window.posthog) {
+      posthog.capture("$pageview");
+    }
   }, [location]);
   return (
     // React Query provider for server state management

@@ -49,13 +49,20 @@ export default function SEO({
     updateMetaTag('author', author);
 
     // Open Graph tags
+    updateMetaTag('og:site_name', 'Ivan Tregear', 'og:site_name');
     updateMetaTag('og:title', title, 'og:title');
     updateMetaTag('og:description', description, 'og:description');
     updateMetaTag('og:image', image, 'og:image');
+    updateMetaTag('og:image:width', '1200', 'og:image:width');
+    updateMetaTag('og:image:height', '630', 'og:image:height');
     updateMetaTag('og:url', url, 'og:url');
     updateMetaTag('og:type', type, 'og:type');
+    updateMetaTag('og:locale', 'en_US', 'og:locale');
 
     // Twitter tags
+    updateMetaTag('twitter:card', 'summary_large_image', 'twitter:card');
+    updateMetaTag('twitter:site', '@IvanTregear', 'twitter:site');
+    updateMetaTag('twitter:creator', '@IvanTregear', 'twitter:creator');
     updateMetaTag('twitter:title', title, 'twitter:title');
     updateMetaTag('twitter:description', description, 'twitter:description');
     updateMetaTag('twitter:image', image, 'twitter:image');

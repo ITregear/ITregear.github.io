@@ -1,11 +1,7 @@
 ---
-title: "Vertical Integration [SOTA Letters - July 2025]"
+title: "Hardware Vertical Integration"
 date: "2025-08-03"
----
-
-Dear SoTA,
-
-> This was originally sent to the SoTA newsletter on 22nd July 2025.
+--- 
 
 There are many ways to make a robotic system. You can purchase off-the-shelf manipulators, such as a [KUKA](https://www.kuka.com/) robot arm and focus on advanced performance through software. You can use off-the-shelf software solutions such as [Viam](https://www.viam.com/), to get your custom hardware up and running quickly. You might choose not to worry about electronics, and buy off-the-shelf PLCs ([Programmable Logic Controllers](https://en.wikipedia.org/wiki/Programmable_logic_controller)) and all-in-one actuators, from [Oriental Motor](https://www.orientalmotor.com/) for example.
 

@@ -7,10 +7,10 @@ import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 import path from "path";
 import { trackExternalLinkClick } from "@/lib/utils";
+import { getMarkdownComponents, createMarkdownExcerpt } from "@/lib/markdown";
 
 // Vite dynamic import for all markdown files in thoughts (new syntax)
 const markdownFiles = import.meta.glob("/src/assets/thoughts/*.md", { query: "?raw", import: "default" });
-console.log("Loaded markdown files:", markdownFiles);
 
 type Post = {
   title: string;
@@ -32,9 +32,8 @@ function usePosts(): Post[] {
         // Extract slug from file path
         const slug = filePath.split('/').pop()?.replace(/\.md$/, '') || '';
 
-        // Create excerpt from first paragraph
-        const firstParagraph = body.split('\n\n')[0].replace(/[#*`]/g, '').trim();
-        const excerpt = firstParagraph.length > 200 ? firstParagraph.substring(0, 200) + '...' : firstParagraph;
+        // Create excerpt using the shared markdown utility
+        const excerpt = createMarkdownExcerpt(body, 200);
 
         return {
           title: (attributes as any).title || slug.replace(/-/g, ' '),
@@ -59,6 +58,7 @@ function usePosts(): Post[] {
 export default function Thoughts() {
   const posts = usePosts();
   const [, setLocation] = useLocation();
+  const previewMarkdownComponents = getMarkdownComponents(true);
 
   return (
     <div className="bg-vintage-beige text-typewriter-dark font-typewriter min-h-screen">
@@ -108,7 +108,9 @@ export default function Thoughts() {
                   </header>
                   
                   <div className="text-typewriter-medium leading-relaxed text-sm md:text-base">
-                    <p>{post.excerpt}</p>
+                    <ReactMarkdown components={previewMarkdownComponents}>
+                      {post.excerpt}
+                    </ReactMarkdown>
                   </div>
                   
                   <div className="mt-3 md:mt-4 text-stamp-red text-xs md:text-sm font-medium">
