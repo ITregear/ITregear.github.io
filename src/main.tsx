@@ -7,8 +7,8 @@ import "./index.css"; // Global styles
 import { PostHogProvider } from "posthog-js/react";
 
 // Mount the App component to the root DOM node with PostHog integration
-const posthogApiKey = import.meta.env.VITE_POSTHOG_API_KEY;
-const posthogHost = import.meta.env.VITE_POSTHOG_HOST || "https://app.posthog.com";
+const posthogApiKey = import.meta.env.VITE_PUBLIC_POSTHOG_KEY;
+const posthogHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST || "https://app.posthog.com";
 
 // Only render PostHog provider if API key is available
 if (posthogApiKey) {
