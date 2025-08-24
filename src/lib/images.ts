@@ -1,29 +1,21 @@
-// Import all images from thoughts/images directory using Vite's glob import
-// This ensures they are included in the build and get proper URLs
-const thoughtsImages = import.meta.glob('/src/assets/thoughts/images/*', { 
-  eager: true, 
-  import: 'default' 
-}) as Record<string, string>;
-
-// Create a mapping from filename to imported URL
-const imageMap = new Map<string, string>();
-
-Object.entries(thoughtsImages).forEach(([path, url]) => {
-  const filename = path.split('/').pop();
-  if (filename) {
-    imageMap.set(filename, url);
-  }
-});
+// Thoughts images for Next.js static export
+const thoughtsImageMap = new Map<string, string>([
+  ['507_movements_and_collins_sharks.png', '/thoughts-images/507_movements_and_collins_sharks.png'],
+  ['demo_day_side_by_side.png', '/thoughts-images/demo_day_side_by_side.png'],
+  ['fusion-v3b.jpg', '/thoughts-images/fusion-v3b.jpg'],
+  ['kaikaku-vertical-product-map.png', '/thoughts-images/kaikaku-vertical-product-map.png'],
+  ['Robot.png', '/thoughts-images/Robot.png'],
+])
 
 // Helper function to get the proper image URL for a filename
 export function getThoughtsImageUrl(filename: string): string | null {
-  return imageMap.get(filename) || null;
+  return thoughtsImageMap.get(filename) || null
 }
 
 // Helper function to get all available image filenames (for debugging)
 export function getAvailableImageFilenames(): string[] {
-  return Array.from(imageMap.keys());
+  return Array.from(thoughtsImageMap.keys())
 }
 
 // Export the raw image map for advanced usage
-export { imageMap as thoughtsImageMap };
+export { thoughtsImageMap }

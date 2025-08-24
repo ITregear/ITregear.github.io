@@ -4,13 +4,13 @@
 set -e
 
 # clean
-rm -rf dist
+rm -rf out
 
 # build
 npm run build
 
 # navigate into the build output directory
-cd dist
+cd out
 
 # copy index.html to 404.html
 cp index.html 404.html
@@ -32,4 +32,4 @@ git push -f https://github.com/ITregear/ITregear.github.io.git main:gh-pages
 cd -
 
 # clean up
-rm -rf dist 
+rm -rf out 

@@ -2,9 +2,15 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
+      fontFamily: {
+        typewriter: ['Special Elite', 'Courier New', 'Monaco', 'monospace'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -51,6 +57,12 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        // Custom vintage colors
+        "vintage-beige": "hsl(var(--vintage-beige))",
+        "typewriter-dark": "hsl(var(--typewriter-dark))",
+        "typewriter-medium": "hsl(var(--typewriter-medium))",
+        "stamp-red": "hsl(var(--stamp-red))",
+        "document-border": "hsl(var(--document-border))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
