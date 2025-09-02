@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-static-html.js",
     "preview": "vite preview",
     "check": "tsc",
     "predeploy": "npm run build",
