@@ -42,31 +42,43 @@ function extractFirstImage(content, distDir) {
 
 function createCleanDescription(content, title) {
   let text = content
-    .replace(/!\[.*?\]\(.*?\)/g, '')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/#{1,6}\s+/g, '')
-    .replace(/\*\*(.*?)\*\*/g, '$1')
-    .replace(/\*(.*?)\*/g, '$1')
-    .replace(/`([^`]+)`/g, '$1')
-    .replace(/---+/g, '')
-    .replace(/\n+/g, ' ')
+    .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to plain text
+    .replace(/#{1,6}\s+/g, '') // Remove headers
+    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
+    .replace(/\*(.*?)\*/g, '$1') // Remove italic
+    .replace(/`([^`]+)`/g, '$1') // Remove code
+    .replace(/---+/g, '') // Remove horizontal rules
+    .replace(/\n+/g, ' ') // Replace newlines with spaces
     .trim();
 
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+  // Split into sentences and clean them
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 10);
   let description = '';
+  const maxLength = 300; // Increased from 150
   
   for (const sentence of sentences) {
     const cleanSentence = sentence.trim();
-    if (cleanSentence.length > 10 && !cleanSentence.toLowerCase().includes(title.toLowerCase().split(' ')[0])) {
-      if (description.length + cleanSentence.length < 150) {
-        description += (description ? '. ' : '') + cleanSentence;
-      } else {
-        break;
-      }
+    const potentialDescription = description + (description ? '. ' : '') + cleanSentence;
+    
+    if (potentialDescription.length <= maxLength) {
+      description = potentialDescription;
+    } else {
+      break;
     }
   }
   
-  return description || text.substring(0, 150).trim();
+  // If we don't have enough content, take the first part of the text
+  if (description.length < 100) {
+    description = text.substring(0, maxLength).trim();
+    // Cut off at the last complete word
+    const lastSpace = description.lastIndexOf(' ');
+    if (lastSpace > 100) {
+      description = description.substring(0, lastSpace);
+    }
+  }
+  
+  return description || 'Read this article by Ivan Tregear';
 }
 
 function generateHTML(article, distDir) {
@@ -75,7 +87,7 @@ function generateHTML(article, distDir) {
   const defaultImage = "https://ivantregear.com/og-image.png";
   
   const meta = {
-    title: `${article.title} - Ivan Tregear`,
+    title: article.title,
     description: articleDescription,
     image: articleImage || defaultImage,
     url: `https://ivantregear.com/thoughts/${article.slug}`,
@@ -121,14 +133,17 @@ function generateHTML(article, distDir) {
     <meta name="robots" content="index, follow" />
     
     <!-- Open Graph / Facebook -->
+    <meta property="og:image" content="${meta.image}" />
+    <meta property="og:image:secure_url" content="${meta.image}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${meta.title}" />
+    <meta property="og:image:type" content="${meta.image.includes('.png') ? 'image/png' : 'image/jpeg'}" />
     <meta property="og:site_name" content="Ivan Tregear" />
     <meta property="og:type" content="${meta.type}" />
     <meta property="og:url" content="${meta.url}" />
     <meta property="og:title" content="${meta.title}" />
     <meta property="og:description" content="${meta.description}" />
-    <meta property="og:image" content="${meta.image}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
@@ -139,10 +154,14 @@ function generateHTML(article, distDir) {
     <meta property="twitter:title" content="${meta.title}" />
     <meta property="twitter:description" content="${meta.description}" />
     <meta property="twitter:image" content="${meta.image}" />
+    <meta property="twitter:image:alt" content="${meta.title}" />
     
     <!-- Article specific tags -->
     <meta property="article:published_time" content="${meta.publishedTime}" />
     <meta property="article:author" content="${meta.author}" />
+    
+    <!-- LinkedIn specific -->
+    <meta name="linkedin:owner" content="Ivan Tregear" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="${meta.url}" />
@@ -177,7 +196,7 @@ function generateHTML(article, distDir) {
       if (!isBot()) {
         setTimeout(function() {
           window.location.href = '/#' + window.location.pathname;
-        }, 500);
+        }, 1000);
       }
     </script>
   </head>
