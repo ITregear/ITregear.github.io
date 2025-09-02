@@ -45,6 +45,7 @@ export default function Home() {
                   <div className="bullet-point" role="listitem">Co-Founder and CTO at KAIKAKU</div>
                   <div className="bullet-point" role="listitem">Co-Founder of Apollo Tech</div>
                   <div className="bullet-point" role="listitem">Forbes 30 Under 30</div>
+                  <div className="bullet-point" role="listitem">Current youngest chartered engineer in the UK</div>
                   <div className="bullet-point" role="listitem">Professional Voice Over Artist</div>
                 </div>
               </DocumentSection>

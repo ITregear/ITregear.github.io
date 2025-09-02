@@ -160,11 +160,24 @@ function generateHTML(article, distDir) {
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" />
     
-    <!-- SPA Redirect -->
+    <!-- SPA Redirect for Human Users -->
     <script>
-      // Redirect to SPA after social scrapers get the meta data
-      if (window.location.search.indexOf('_escaped_fragment_') === -1) {
-        window.location.href = '/#' + window.location.pathname;
+      // Detect if this is likely a bot/scraper vs human user
+      function isBot() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        const botPatterns = [
+          'facebookexternalhit', 'twitterbot', 'linkedinbot', 'slackbot',
+          'whatsapp', 'telegrambot', 'discordbot', 'googlebot', 'bingbot',
+          'crawler', 'spider', 'scraper'
+        ];
+        return botPatterns.some(pattern => userAgent.includes(pattern));
+      }
+      
+      // Only redirect human users to SPA after a short delay
+      if (!isBot()) {
+        setTimeout(function() {
+          window.location.href = '/#' + window.location.pathname;
+        }, 500);
       }
     </script>
   </head>
