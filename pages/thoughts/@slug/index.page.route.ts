@@ -1,0 +1,1 @@
+export default '/thoughts/@slug';
