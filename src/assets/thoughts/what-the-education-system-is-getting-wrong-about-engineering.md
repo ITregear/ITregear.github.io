@@ -47,7 +47,7 @@ That robot wouldn’t exist if I’d followed the university playbook. One profe
 
 ### Stepping Out of the Pool
 
-> The answer isn’t just learning to swim better, it’s redesigning the water we’re teaching students in.
+> The answer isn’t just learning to swim better, it’s redesigning the tank we’re teaching students in.
 
 If you want to get started building, but feel like the typical engineering workflow is looming and slow:
 
@@ -68,4 +68,4 @@ The best engineers aren’t the ones who perfectly replicate their original Gant
 
 And like the great white shark, capable but dying in captivity, we risk losing brilliant engineers to the limits we impose on their learning.
 
-**-Ivan Tregear**
+-Ivan Tregear
