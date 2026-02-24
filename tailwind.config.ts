@@ -5,14 +5,31 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Space Grotesk", "Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        mono: ["IBM Plex Mono", "Space Grotesk", "SFMono-Regular", "Menlo", "monospace"],
+      },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        canvas: "hsl(var(--canvas))",
+        paper: "hsl(var(--paper))",
+        sandstone: "hsl(var(--sandstone))",
+        stone: "hsl(var(--stone))",
+        oak: "hsl(var(--oak))",
+        clay: "hsl(var(--clay))",
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          soft: "hsl(var(--forest-soft))",
+        },
+        terracotta: "hsl(var(--terracotta))",
+        moss: "hsl(var(--moss))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

@@ -1,40 +1,74 @@
-// DocumentSection.tsx
-// A reusable section component with a title, content, and optional footer. Used for layout consistency.
+import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
 interface DocumentSectionProps {
-  title: string; // Section title
-  children: React.ReactNode; // Main content of the section
-  footer?: string; // Optional footer text
-  className?: string; // Optional additional CSS classes
+  title: string;
+  children: ReactNode;
+  footer?: string;
+  className?: string;
+  eyebrow?: string;
+  accent?: "forest" | "terracotta";
+  actions?: ReactNode;
 }
 
-// DocumentSection: Provides a styled section with a header, content, and optional footer
-export default function DocumentSection({ title, children, footer, className = "" }: DocumentSectionProps) {
+const accentGradients: Record<NonNullable<DocumentSectionProps["accent"]>, string> = {
+  forest: "from-forest/60 via-forest/20 to-transparent",
+  terracotta: "from-terracotta/60 via-terracotta/20 to-transparent",
+};
+
+export default function DocumentSection({
+  title,
+  children,
+  footer,
+  className = "",
+  eyebrow,
+  accent = "forest",
+  actions,
+}: DocumentSectionProps) {
+  const gradient = accentGradients[accent];
+
   return (
-    // Main container with styling and optional custom classes
-    <div className={`grid-section document-shadow p-4 md:p-6 bg-white/30 flex flex-col h-full ${className}`}>
-      {/* Section header with title and divider */}
-      <div className="classified-header mb-4">
-        <h2 className="text-lg font-bold text-stamp-red mb-2">{title}</h2>
-        <div className="h-px bg-document-border"></div>
-      </div>
-      
-      {/* Section content */}
-      <div className="flex-1">
-        {children}
-      </div>
-      
-      {/* Optional footer */}
-      {footer && (
-        <div className="mt-auto pt-4 text-xs text-typewriter-medium">
-          {footer.split('\n').map((line, idx) => (
-            <span key={idx}>
-              {line}
-              {idx < footer.split('\n').length - 1 && <br />}
-            </span>
-          ))}
-        </div>
+    <section
+      className={cn(
+        "relative overflow-hidden rounded-[28px] border border-sandstone/60 bg-paper/80 px-5 py-6 sm:px-7 sm:py-8 shadow-soft backdrop-blur-[24px]",
+        className,
       )}
-    </div>
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-x-6 top-3 h-1 rounded-full blur-[1px]",
+          "bg-gradient-to-r",
+          gradient,
+        )}
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-grid-soft opacity-[0.15]"
+      />
+      <div className="relative flex flex-col gap-4">
+        <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            {eyebrow && (
+              <p className="text-[10px] font-semibold uppercase tracking-[0.55em] text-clay/70">
+                {eyebrow}
+              </p>
+            )}
+            <h2 className="font-display text-[1.4rem] text-ink/90 sm:text-2xl">{title}</h2>
+          </div>
+          {actions}
+        </header>
+        <div className="text-base leading-relaxed text-oak [&>*+*]:mt-3">{children}</div>
+        {footer && (
+          <footer className="pt-4 text-[11px] uppercase tracking-[0.35em] text-stone/70">
+            {footer.split("\n").map((line, idx) => (
+              <span key={`${line}-${idx}`} className="block">
+                {line}
+              </span>
+            ))}
+          </footer>
+        )}
+      </div>
+    </section>
   );
 }
