@@ -23,7 +23,7 @@ Yet in its wake, other forms of technology and innovation have been left in the 
 
 ### Fighting to Force the Future
 
-At KAIKAKU we’re fighting to drag the archaic restaurant sector into the 21st century. Cars have been assembled with robotic arms since the 70s - where is the same drive in the food industry? For the last 2 years we’ve pushed with this passion, creating what we believe to be the highest margin improving product for Quick Service Restaurants (QSRs) - [Fusion, the world’s fastest modular food assembly robot.](https://www.linkedin.com/feed/update/urn:li:activity:7383538409685925888/)
+At KAIKAKU we’re fighting to drag the archaic restaurant sector into the 21st century. Cars have been assembled with robotic manipulators since the 1970s - where is the same drive in the food industry? For the last 2 years we’ve pushed with this passion, creating what we believe to be the highest margin-uplifting product for Quick Service Restaurants (QSRs) - [Fusion, the world’s fastest modular food assembly robot.](https://www.linkedin.com/feed/update/urn:li:activity:7383538409685925888/)
 
 ![image.png](./images/fusion_v4.png)
 
@@ -69,4 +69,29 @@ Three days later we were deployed in a second location (in a different country).
 
 This story is meant to be just one datapoint in the wave of founders and engineers that know hardware innovation has just as much value to give. But it’s also a call to move on from the ‘hardware *is* hard - that’s why they call it hardware’ mantra. The way to driving growth and investment into hardware startups isn’t to complain that too much money is going into software - it’s to take onboard the entirely valid criticisms that hardware development and deployment can be slow, and do something about it.
 
-We live in a world where software development has been accelerated hundreds of times over. But 3D printers are no longer the hobbyists toy - they are ready for full scale manufacturing. CAD packages can now be run in browser on laptops. Custom PCBs and parts can be ordered and arrive within days.
+Here’s how we did it.
+
+1. **Build up rather than down.**
+    
+    Nobody has cracked full scale restaurant automation in one shot yet. Our approach is to drip feed automation and sensing into operations. This demonstrates value creation and builds trust, while we’re continue to add to capabilities over time.
+    
+2. **Hardware modularity is key.**
+    
+    The ultimate dream is a one-size-fits-all robot. While humanoids may be the answer, they are years away from highly dexterous manipulation to rival human hands. For now, hardware that can be readily configured across a wide variety of environments is key, otherwise you’ll limit your TAM.
+    
+3. **Simple is king.**
+    
+    Doing one thing extremely well is better than several immature features.
+    
+4. **Rush to deployments.**
+    
+    While building trust is key, engineers need to be immersed in real operations. We used to clean our own robots in Common Room, but even in the world of B2B, all of our engineers are *behind the counter* troubleshooting in real time.
+    
+5. **Sensing first.**
+    
+    Our new approach is to demonstrate core issues in operations through simple but reliable sensing. This makes selling the grander vision of automation more convincing, and builds the data processing and communication foundations for robotics.
+    
+
+---
+
+**If hardware is hard - good. That just means the outcome is on us.**

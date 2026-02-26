@@ -32,10 +32,8 @@ export const getMarkdownComponents = (isPreview: boolean = false) => ({
     return <li className="mb-1.5">{props.children}</li>;
   },
   p: (props: any) => {
-    const className = isPreview
-      ? "inline"
-      : "mb-5 leading-relaxed";
-    return <span className={className}>{props.children}</span>;
+    if (isPreview) return <span className="inline">{props.children}</span>;
+    return <p className="mb-5 leading-relaxed">{props.children}</p>;
   },
   a: (props: any) => (
     <a
