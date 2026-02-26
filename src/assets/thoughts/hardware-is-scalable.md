@@ -23,7 +23,7 @@ Yet in its wake, other forms of technology and innovation have been left in the 
 
 ### Fighting to Force the Future
 
-At KAIKAKU we’re fighting to drag the archaic restaurant sector into the 21st century. Cars have been assembled with robotic manipulators since the 1970s - where is the same drive in the food industry? For the last 2 years we’ve pushed with this passion, creating what we believe to be the highest margin-uplifting product for Quick Service Restaurants (QSRs) - [Fusion, the world’s fastest modular food assembly robot.](https://www.linkedin.com/feed/update/urn:li:activity:7383538409685925888/)
+At KAIKAKU we’re fighting to drag the archaic restaurant sector into the 21st century. Cars have been assembled with robotic manipulators [since the 1970s](https://www.automate.org/robotics/engelberger/joseph-engelberger-unimate) - where is the same drive in the food industry? For the last 2 years we’ve pushed with this passion, creating what we believe to be the highest margin-uplifting product for Quick Service Restaurants (QSRs) - [Fusion, the world’s fastest modular food assembly robot.](https://www.linkedin.com/feed/update/urn:li:activity:7383538409685925888/)
 
 ![image.png](./images/fusion_v4.png)
 
@@ -33,10 +33,9 @@ Having spent these 2 years iterating daily, deployed four generations of Fusion 
 
 ### The Truth
 
-Common Room, having been a roaring success as a living lab, allowing us to speed run 5+ years of R&D into 18 months, was closed in November 2025. We immediately switched our attention to deploying Fusion into existing restaurants. Quickly, we realised the negativity around hardware was right. Restaurants *were* keen to innovate, but deploying a revolutionary piece of hardware into hectic and varied environments was a serious roadblock. 
+[Common Room](https://www.eatcommonroom.com/), having been a roaring success as a living lab, allowing us to speed run 5+ years of R&D into 18 months, was closed in November 2025. We immediately switched our attention to deploying Fusion into existing restaurants. Quickly, we realised the negativity around hardware was right. Restaurants *were* keen to innovate, but deploying a revolutionary piece of hardware into hectic and varied environments was a serious roadblock. 
 
-> One shot full automation was simply too much to ask the restaurant industry to underwrite
-> 
+> One shot full automation was simply too much to ask the restaurant industry to underwrite.
 
 So we were presented a choice. Double down on the negativity surrounding hardware, and further broaden the polarising divide between ‘hardware first’ and ‘software first’. Or try and prove the contrarian take - that hardware can be deployed into an antiquated industry, with short sales cycles, and fast scaling.
 
@@ -61,7 +60,7 @@ Laser cut prototype that afternoon. Full scale proof of concept by the end of th
 
 We had a patent filed protecting our force plate architecture by the end of week 5, and just 30 working days after inception, we had our new **hardware** **product deployed in a real restaurant.** 
 
-Three days later we were deployed in a second location (in a different country). One week after that we had our third deployment.
+Three days later we were deployed in a second location (in a different country). One week after that we had our third deployment. And with that, [Traysense](https://traysense.co.uk/) was born.
 
 ![Deployments](./images/deployments.png)
 
@@ -92,6 +91,4 @@ Here’s how we did it.
     Our new approach is to demonstrate core issues in operations through simple but reliable sensing. This makes selling the grander vision of automation more convincing, and builds the data processing and communication foundations for robotics.
     
 
----
-
-**If hardware is hard - good. That just means the outcome is on us.**
+**If hardware is hard - good. The outcome is still on us.**

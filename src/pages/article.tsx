@@ -5,7 +5,7 @@ import SEO from "@/components/seo";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import fm from "front-matter";
-import { getMarkdownComponents, createCleanDescription } from "@/lib/markdown";
+import { getMarkdownComponents, createCleanDescription, extractBibliography, Bibliography } from "@/lib/markdown";
 import { getThoughtsImageUrl } from "@/lib/images";
 
 // Vite dynamic import for all markdown files in thoughts
@@ -105,7 +105,11 @@ export default function Article() {
   const { slug } = useParams();
   
   const article = useArticle(slug);
-  const markdownComponents = getMarkdownComponents(false);
+  const bibliography = React.useMemo(
+    () => (article ? extractBibliography(article.content) : []),
+    [article],
+  );
+  const markdownComponents = getMarkdownComponents(false, bibliography);
 
   if (!article) {
     return (
@@ -188,6 +192,8 @@ export default function Article() {
             <div className="text-oak leading-relaxed text-base sm:text-lg [&>*+*]:mt-4">
               <ReactMarkdown remarkPlugins={[remarkBreaks]} components={markdownComponents}>{article.content}</ReactMarkdown>
             </div>
+
+            <Bibliography entries={bibliography} />
           </article>
         </div>
       </main>

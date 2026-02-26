@@ -5,6 +5,7 @@ import SEO from "@/components/seo";
 import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 import { getMarkdownComponents, createMarkdownExcerpt } from "@/lib/markdown";
+import { getThoughtsImageUrl } from "@/lib/images";
 
 // Vite dynamic import for all markdown files in thoughts (new syntax)
 const markdownFiles = import.meta.glob("/src/assets/thoughts/*.md", { query: "?raw", import: "default" });
@@ -15,6 +16,7 @@ type Post = {
   content: string;
   slug: string;
   excerpt: string;
+  image: string | null;
 };
 
 function usePosts(): Post[] {
@@ -29,15 +31,18 @@ function usePosts(): Post[] {
         // Extract slug from file path
         const slug = filePath.split('/').pop()?.replace(/\.md$/, '') || '';
 
-        // Create excerpt using the shared markdown utility
         const excerpt = createMarkdownExcerpt(body, 200);
+
+        const imageMatch = body.match(/!\[.*?\]\(\.\/images\/(.*?)\)/);
+        const image = imageMatch ? getThoughtsImageUrl(imageMatch[1]) : null;
 
         return {
           title: (attributes as any).title || slug.replace(/-/g, ' '),
           date: (attributes as any).date || '',
           content: body,
           slug,
-          excerpt
+          excerpt,
+          image,
         };
       });
 
@@ -92,26 +97,39 @@ export default function Thoughts() {
                   role="button"
                   aria-label={`Read article: ${post.title}`}
                 >
-                  <h2 className="font-display text-xl text-ink group-hover:text-forest transition-colors sm:text-2xl">
-                    {post.title}
-                  </h2>
-                  {post.date && (
-                    <time className="mt-1 block text-[11px] uppercase tracking-[0.3em] text-stone" dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  )}
-                  <div className="mt-3 text-sm leading-relaxed text-oak">
-                    <ReactMarkdown components={previewMarkdownComponents}>
-                      {post.excerpt}
-                    </ReactMarkdown>
+                  <div className="flex gap-5">
+                    <div className="min-w-0 flex-1">
+                      <h2 className="font-display text-xl text-ink group-hover:text-forest transition-colors sm:text-2xl">
+                        {post.title}
+                      </h2>
+                      {post.date && (
+                        <time className="mt-1 block text-[11px] uppercase tracking-[0.3em] text-stone" dateTime={post.date}>
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </time>
+                      )}
+                      <div className="mt-3 text-sm leading-relaxed text-oak">
+                        <ReactMarkdown components={previewMarkdownComponents}>
+                          {post.excerpt}
+                        </ReactMarkdown>
+                      </div>
+                      <span className="mt-3 inline-block text-sm text-forest">
+                        Read more &rarr;
+                      </span>
+                    </div>
+                    {post.image && (
+                      <div className="hidden shrink-0 sm:block">
+                        <img
+                          src={post.image}
+                          alt=""
+                          className="h-28 w-28 rounded-xl object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
-                  <span className="mt-3 inline-block text-sm text-forest">
-                    Read more &rarr;
-                  </span>
                 </article>
               ))}
             </div>
