@@ -3,6 +3,7 @@ import { useLocation, useParams } from "wouter";
 import TabsNav from "@/components/ui/tabs";
 import SEO from "@/components/seo";
 import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import fm from "front-matter";
 import { getMarkdownComponents, createCleanDescription } from "@/lib/markdown";
 import { getThoughtsImageUrl } from "@/lib/images";
@@ -185,7 +186,7 @@ export default function Article() {
             </header>
             
             <div className="text-oak leading-relaxed text-base sm:text-lg [&>*+*]:mt-4">
-              <ReactMarkdown components={markdownComponents}>{article.content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkBreaks]} components={markdownComponents}>{article.content}</ReactMarkdown>
             </div>
           </article>
         </div>
