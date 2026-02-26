@@ -133,9 +133,9 @@ const socialLinks = [
 ];
 
 const summaryParagraphs = [
-  "I am a Chief Technology Officer working in the glamorous field of Fast Food Robotics. Along with Josef Chen, we founded KAIKAKU, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the Fusion family) that have all served food to real paying customers (click the image to see them all).",
+  <>I am a Chief Technology Officer working in the glamorous field of Fast Food Robotics. Along with <a href="https://josef.cn" target="_blank" rel="noopener noreferrer">Josef Chen</a>, we founded <a href="https://www.kaikaku.ai/" target="_blank" rel="noopener noreferrer">KAIKAKU</a>, where we are revolutionising the world of Quick Service Restaurants through hardware, software and AI. In 18 months we have deployed 4 food assembly robots (the Fusion family) that have all served food to real paying customers (click the image to see them all).</>,
   "Our goal is to automate the laborious and menial tasks that no human craves, with low cost and targeted robotics, allowing humans to focus on what they will always be superior to machines at; being hospitable.",
-  "I studied Mechanical Engineering at Imperial College London, with a specialisation in mechatronics and control. At university I sailed (see the Reading Rumble link for my Magnum Opus), went to 568 too many times, and was awarded the Imperial Centenary Prize. In my free time I like to build robots or RC planes, cook meals I watched from a YouTube video without a recipe, and do jujitsu.",
+  "I studied Mechanical Engineering at Imperial College London, with a specialisation in mechatronics and control. At university I sailed (see the Reading Rumble link for my Magnum Opus), went to 568 too often, and was awarded the Imperial Centenary Prize. In my free time you'll find me fishing (or trying to), cooking, or building robots.",
 ];
 
 export default function Home() {
@@ -172,7 +172,7 @@ export default function Home() {
 
       <main className="relative mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <section className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl">
+          <h1 className="font-display text-4xl leading-tight text-forest sm:text-5xl">
             Ivan Tregear
           </h1>
 
@@ -291,7 +291,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="flex flex-col items-center gap-1 border-t border-sandstone/40 pt-8 text-center text-xs tracking-wide text-stone/60">
+        <footer className="flex flex-col items-center gap-1 border-t border-forest/20 pt-8 text-center text-xs tracking-wide text-stone/60">
           <p>&copy; {new Date().getFullYear()} Ivan Tregear</p>
         </footer>
       </main>

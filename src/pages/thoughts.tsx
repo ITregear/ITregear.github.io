@@ -72,7 +72,7 @@ export default function Thoughts() {
       </header>
       <main className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <div className="max-w-3xl">
-          <h1 className="font-display text-3xl text-ink sm:text-4xl mb-8">Thoughts</h1>
+          <h1 className="font-display text-3xl text-forest sm:text-4xl mb-8">Thoughts</h1>
           {posts.length === 0 ? (
             <p className="text-stone">No posts yet.</p>
           ) : (
@@ -80,7 +80,7 @@ export default function Thoughts() {
               {posts.map((post) => (
                 <article 
                   key={post.slug} 
-                  className="group cursor-pointer rounded-2xl border border-sandstone/40 bg-paper/80 p-5 sm:p-6 shadow-soft transition hover:border-forest/40"
+                  className="group cursor-pointer rounded-2xl border border-sandstone/40 border-l-2 border-l-forest/30 bg-paper/80 p-5 sm:p-6 shadow-soft transition hover:border-forest/40"
                   onClick={() => setLocation(`/thoughts/${post.slug}`)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {

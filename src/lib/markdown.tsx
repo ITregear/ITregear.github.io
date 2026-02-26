@@ -9,15 +9,15 @@ export const getMarkdownComponents = (isPreview: boolean = false) => ({
   },
   h1: (props: any) => {
     if (isPreview) return <span className="font-bold">{props.children}</span>;
-    return <h1 className="font-display text-2xl sm:text-3xl text-ink mt-8 mb-4">{props.children}</h1>;
+    return <h1 className="font-display text-2xl sm:text-3xl text-forest mt-8 mb-4">{props.children}</h1>;
   },
   h2: (props: any) => {
     if (isPreview) return <span className="font-bold">{props.children}</span>;
-    return <h2 className="font-display text-xl sm:text-2xl text-ink mt-7 mb-3">{props.children}</h2>;
+    return <h2 className="font-display text-xl sm:text-2xl text-forest mt-7 mb-3">{props.children}</h2>;
   },
   h3: (props: any) => {
     if (isPreview) return <span className="font-bold">{props.children}</span>;
-    return <h3 className="font-display text-lg sm:text-xl text-ink mt-6 mb-2">{props.children}</h3>;
+    return <h3 className="font-display text-lg sm:text-xl text-forest mt-6 mb-2">{props.children}</h3>;
   },
   ul: (props: any) => {
     if (isPreview) return <span>{props.children}</span>;

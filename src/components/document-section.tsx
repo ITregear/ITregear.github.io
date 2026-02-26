@@ -21,7 +21,7 @@ export default function DocumentSection({
   return (
     <section
       className={cn(
-        "relative rounded-2xl border border-sandstone/50 bg-paper/80 px-5 py-6 sm:px-7 sm:py-8 shadow-soft backdrop-blur-sm",
+        "relative rounded-2xl border border-sandstone/50 bg-paper/80 px-5 py-6 sm:px-7 sm:py-8 shadow-soft backdrop-blur-sm border-l-2 border-l-forest/30",
         className,
       )}
     >
@@ -29,11 +29,11 @@ export default function DocumentSection({
         <header className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
           <div>
             {eyebrow && (
-              <p className="text-[10px] font-medium uppercase tracking-[0.4em] text-stone/70">
+              <p className="text-[10px] font-medium uppercase tracking-[0.4em] text-forest/50">
                 {eyebrow}
               </p>
             )}
-            <h2 className="font-display text-[1.4rem] text-ink/90 sm:text-2xl">{title}</h2>
+            <h2 className="font-display text-[1.4rem] text-forest sm:text-2xl">{title}</h2>
           </div>
           {actions}
         </header>

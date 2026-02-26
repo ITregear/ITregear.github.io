@@ -161,7 +161,7 @@ export default function Article() {
           <nav className="mb-8">
             <button 
               onClick={() => setLocation('/thoughts')}
-              className="flex items-center text-sm text-stone transition hover:text-forest"
+              className="flex items-center text-sm text-forest/70 transition hover:text-forest"
             >
               <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -172,7 +172,7 @@ export default function Article() {
           
           <article>
             <header className="mb-8">
-              <h1 className="font-display text-3xl text-ink sm:text-4xl">{article.title}</h1>
+              <h1 className="font-display text-3xl text-forest sm:text-4xl">{article.title}</h1>
               {article.date && (
                 <time className="mt-2 block text-[11px] uppercase tracking-[0.3em] text-stone" dateTime={article.date}>
                   {new Date(article.date).toLocaleDateString('en-US', {
