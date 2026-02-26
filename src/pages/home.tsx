@@ -75,7 +75,7 @@ const quickFacts = [
   "Co-Founder and CTO at KAIKAKU",
   "Co-Founder of Apollo Tech",
   "Forbes 30 Under 30",
-  "Current youngest chartered engineer in the UK",
+  "Youngest chartered engineer in the UK",
   "Professional Voice Over Artist",
 ];
 
@@ -108,10 +108,10 @@ const referenceLinks = [
 ];
 
 const highlightChips = [
-  "Fast food robotics",
+  "Restaurant Robotics",
   "Imperial College London",
   "Forbes 30 Under 30",
-  "Hospitality automation",
+  "Chartered Engineer",
 ];
 
 const socialLinks = [
@@ -165,106 +165,46 @@ export default function Home() {
       </div>
 
       <header className="relative">
-        <div className="mx-auto max-w-6xl px-4 pb-6 pt-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 pb-4 pt-8 sm:px-6 lg:px-8">
           <TabsNav />
         </div>
       </header>
 
-      <main className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
-        <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-stone">Ivan Tregear</p>
-            <div className="space-y-4">
-              <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl">
-                Serene robotics for the most human industry on earth.
-              </h1>
-              <p className="text-lg text-oak/90">
-                CTO & Co-founder at KAIKAKU, building fast food robotics that let teams focus on
-                hospitality. Engineering instincts shaped by Imperial College London and a love of
-                mechatronics, sailing, voice work, and carefully made food.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              {highlightChips.map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full border border-sandstone/60 bg-paper/70 px-4 py-1.5 text-sm font-medium text-stone shadow-sm"
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="https://www.kaikaku.ai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackExternalLinkClick("https://www.kaikaku.ai/")}
-                className="inline-flex items-center gap-2 rounded-full border border-forest/20 bg-forest px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5"
-              >
-                Visit KAIKAKU
-              </a>
-              <a
-                href="/thoughts"
-                className="inline-flex items-center gap-2 rounded-full border border-sandstone/80 bg-white/70 px-6 py-3 text-sm font-semibold text-forest transition hover:border-forest/50"
-              >
-                Explore Thoughts
-              </a>
-            </div>
-          </div>
+      <main className="relative mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+        <section className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl">
+            Ivan Tregear
+          </h1>
 
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-[42px] border border-sandstone/60 bg-paper/80 shadow-soft backdrop-blur-3xl">
-              {heroImage && (
-                <img
-                  src={heroImage.src}
-                  alt={heroImage.label}
-                  className="hero-image h-[420px] w-full object-cover"
-                  draggable={false}
-                />
-              )}
-              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-gradient-to-t from-canvas/90 via-canvas/20 to-transparent px-6 py-4 backdrop-blur">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.45em] text-stone">Studio Archive</p>
-                  <p className="font-display text-xl text-ink">{heroImage?.label}</p>
-                </div>
-                {heroImages.length > 1 && (
-                  <button
-                    type="button"
-                    onClick={shuffleHero}
-                    className="rounded-full border border-sandstone/60 bg-white/70 px-4 py-2 text-sm font-semibold text-forest transition hover:border-forest/60"
-                  >
-                    Shuffle
-                  </button>
-                )}
-              </div>
-            </div>
-            <div className="mt-4 flex justify-end text-xs uppercase tracking-[0.35em] text-stone/70">
-              refreshed on each visit
-            </div>
+          <div className="flex items-center justify-center">
+            {heroImage && (
+              <img
+                src={heroImage.src}
+                alt={heroImage.label}
+                onClick={shuffleHero}
+                className="hero-image h-auto max-h-[360px] w-full max-w-sm cursor-pointer object-contain transition-opacity hover:opacity-80"
+                draggable={false}
+              />
+            )}
           </div>
         </section>
 
         <section className="grid gap-6 lg:grid-cols-12">
           <DocumentSection
-            eyebrow="Credentials"
-            title="Personnel File"
-            footer="UPDATED: JUN 2025"
+            title="At a Glance"
             className="lg:col-span-5"
           >
             <ul className="space-y-3 text-base text-oak">
               {quickFacts.map((fact) => (
                 <li key={fact} className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-forest/70" aria-hidden="true" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-forest/60" aria-hidden="true" />
                   <span>{fact}</span>
                 </li>
               ))}
             </ul>
           </DocumentSection>
           <DocumentSection
-            eyebrow="Operational Brief"
-            title="Summary"
-            footer={`DOCUMENT TYPE: BRIEFING\nORIGIN: TECHNICAL DIVISION`}
+            title="About"
             className="lg:col-span-7"
           >
             {summaryParagraphs.map((paragraph) => (
@@ -275,10 +215,8 @@ export default function Home() {
 
         <section className="grid gap-6 lg:grid-cols-12">
           <DocumentSection
-            eyebrow="Access Level: Public"
-            title="Reference Materials"
-            accent="terracotta"
-            className="lg:col-span-6"
+            title="Links"
+            className="lg:col-span-5"
           >
             <div className="space-y-3">
               {referenceLinks.map((link) => (
@@ -288,80 +226,73 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackExternalLinkClick(link.href)}
-                  className="group flex flex-col rounded-2xl border border-sandstone/60 bg-white/70 px-4 py-3 transition hover:border-forest/50"
+                  className="group flex flex-col rounded-xl border border-sandstone/40 bg-white/60 px-4 py-3 transition hover:border-forest/40"
                 >
-                  <span className="font-semibold text-ink group-hover:text-forest">{link.label}</span>
+                  <span className="font-medium text-ink group-hover:text-forest">{link.label}</span>
                   <span className="text-sm text-stone">{link.description}</span>
                 </a>
               ))}
             </div>
           </DocumentSection>
 
-          <DocumentSection
-            eyebrow="Status: Active"
-            title="Communications"
-            className="lg:col-span-3"
-          >
-            <div className="flex items-center justify-between gap-3">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackExternalLinkClick(link.href)}
-                    aria-label={link.label}
-                    className="social-icon flex h-12 w-12 items-center justify-center rounded-full border border-sandstone/70 bg-white/70 text-2xl text-ink"
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-            </div>
-          </DocumentSection>
+          <div className="flex flex-col gap-6 lg:col-span-7">
+            <DocumentSection title="Latest Thoughts">
+              {thoughtPreviews.length === 0 ? (
+                <p className="text-sm text-stone">New essays coming soon.</p>
+              ) : (
+                <div className="space-y-4">
+                  {thoughtPreviews.map((post) => (
+                    <a
+                      key={post.slug}
+                      href={`/thoughts/${post.slug}`}
+                      className="block rounded-xl border border-transparent bg-white/50 px-4 py-3 transition hover:border-forest/40"
+                    >
+                      <p className="font-medium text-ink">{post.title}</p>
+                      {post.date && (
+                        <time
+                          className="text-[11px] uppercase tracking-[0.3em] text-stone"
+                          dateTime={post.date}
+                        >
+                          {new Date(post.date).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                          })}
+                        </time>
+                      )}
+                      <div className="pt-2 text-sm leading-relaxed text-stone">
+                        <ReactMarkdown components={previewComponents}>{post.excerpt}</ReactMarkdown>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </DocumentSection>
 
-          <DocumentSection
-            eyebrow="Notebook"
-            title="Latest Thoughts"
-            className="lg:col-span-3"
-          >
-            {thoughtPreviews.length === 0 ? (
-              <p className="text-sm text-stone">Collecting new essays. Check back soon.</p>
-            ) : (
-              <div className="space-y-4">
-                {thoughtPreviews.map((post) => (
-                  <a
-                    key={post.slug}
-                    href={`/thoughts/${post.slug}`}
-                    className="block rounded-2xl border border-transparent bg-white/60 px-3 py-2 transition hover:border-forest/40"
-                  >
-                    <p className="text-sm font-semibold text-ink">{post.title}</p>
-                    {post.date && (
-                      <time
-                        className="text-[11px] uppercase tracking-[0.4em] text-stone"
-                        dateTime={post.date}
-                      >
-                        {new Date(post.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                        })}
-                      </time>
-                    )}
-                    <div className="pt-1 text-sm text-stone">
-                      <ReactMarkdown components={previewComponents}>{post.excerpt}</ReactMarkdown>
-                    </div>
-                  </a>
-                ))}
+            <DocumentSection title="Connect">
+              <div className="flex items-center gap-4">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackExternalLinkClick(link.href)}
+                      aria-label={link.label}
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-sandstone/50 bg-white/60 text-lg text-oak transition hover:text-forest hover:border-forest/40"
+                    >
+                      <Icon />
+                    </a>
+                  );
+                })}
               </div>
-            )}
-          </DocumentSection>
+            </DocumentSection>
+          </div>
         </section>
 
-        <footer className="flex flex-col items-center gap-2 border-t border-sandstone/60 pt-10 text-center text-xs uppercase tracking-[0.35em] text-stone/80">
-          <p>Confidential personnel file • Authorised access only</p>
-          <p>Document ID: IT-001 • Living archive</p>
+        <footer className="flex flex-col items-center gap-1 border-t border-sandstone/40 pt-8 text-center text-xs tracking-wide text-stone/60">
+          <p>&copy; {new Date().getFullYear()} Ivan Tregear</p>
         </footer>
       </main>
     </div>

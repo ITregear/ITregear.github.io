@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Space Grotesk", "Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        sans: ["Source Serif 4", "Georgia", "Cambria", "Times New Roman", "serif"],
         display: ["Fraunces", "Georgia", "serif"],
-        mono: ["IBM Plex Mono", "Space Grotesk", "SFMono-Regular", "Menlo", "monospace"],
+        mono: ["IBM Plex Mono", "SFMono-Regular", "Menlo", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
