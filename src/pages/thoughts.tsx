@@ -1,12 +1,9 @@
 import * as React from "react";
 import { useLocation } from "wouter";
-import Header from "@/components/header";
 import TabsNav from "@/components/ui/tabs";
 import SEO from "@/components/seo";
 import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
-import path from "path";
-import { trackExternalLinkClick } from "@/lib/utils";
 import { getMarkdownComponents, createMarkdownExcerpt } from "@/lib/markdown";
 
 // Vite dynamic import for all markdown files in thoughts (new syntax)
@@ -61,26 +58,29 @@ export default function Thoughts() {
   const previewMarkdownComponents = getMarkdownComponents(true);
 
   return (
-    <div className="bg-vintage-beige text-typewriter-dark font-typewriter min-h-screen">
+    <div className="relative min-h-screen bg-canvas text-ink">
       <SEO 
         title="Thoughts - Ivan Tregear"
         description="Articles and thoughts on robotics, engineering, and entrepreneurship by Ivan Tregear, CTO at KAIKAKU."
         url="https://ivantregear.com/thoughts"
         type="website"
       />
-      <Header />
-      <TabsNav />
-      <main className="container mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
-        <div className="max-w-4xl w-full mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 typewriter-text text-center">Thoughts</h2>
+      <header className="relative">
+        <div className="mx-auto max-w-6xl px-4 pb-4 pt-8 sm:px-6 lg:px-8">
+          <TabsNav />
+        </div>
+      </header>
+      <main className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+        <div className="max-w-3xl">
+          <h1 className="font-display text-3xl text-forest sm:text-4xl mb-8">Thoughts</h1>
           {posts.length === 0 ? (
-            <div className="text-typewriter-medium typewriter-text text-center">No blog posts yet.</div>
+            <p className="text-stone">No posts yet.</p>
           ) : (
-            <div className="space-y-6 md:space-y-8">
+            <div className="space-y-8">
               {posts.map((post) => (
                 <article 
                   key={post.slug} 
-                  className="bg-white/60 rounded-lg p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  className="group cursor-pointer rounded-2xl border border-sandstone/40 border-l-2 border-l-forest/30 bg-paper/80 p-5 sm:p-6 shadow-soft transition hover:border-forest/40"
                   onClick={() => setLocation(`/thoughts/${post.slug}`)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -92,30 +92,26 @@ export default function Thoughts() {
                   role="button"
                   aria-label={`Read article: ${post.title}`}
                 >
-                  <header className="mb-3 md:mb-4">
-                    <h3 className="text-lg md:text-xl font-bold text-typewriter-dark mb-2 hover:text-stamp-red transition-colors">
-                      {post.title}
-                    </h3>
-                    {post.date && (
-                      <time className="text-typewriter-medium text-xs md:text-sm" dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </time>
-                    )}
-                  </header>
-                  
-                  <div className="text-typewriter-medium leading-relaxed text-sm md:text-base">
+                  <h2 className="font-display text-xl text-ink group-hover:text-forest transition-colors sm:text-2xl">
+                    {post.title}
+                  </h2>
+                  {post.date && (
+                    <time className="mt-1 block text-[11px] uppercase tracking-[0.3em] text-stone" dateTime={post.date}>
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  )}
+                  <div className="mt-3 text-sm leading-relaxed text-oak">
                     <ReactMarkdown components={previewMarkdownComponents}>
                       {post.excerpt}
                     </ReactMarkdown>
                   </div>
-                  
-                  <div className="mt-3 md:mt-4 text-stamp-red text-xs md:text-sm font-medium">
-                    Read more →
-                  </div>
+                  <span className="mt-3 inline-block text-sm text-forest">
+                    Read more &rarr;
+                  </span>
                 </article>
               ))}
             </div>
