@@ -192,11 +192,13 @@ function generateHTML(article, distDir) {
         return botPatterns.some(pattern => userAgent.includes(pattern));
       }
       
-      // Only redirect human users to SPA after a short delay
+      // Only redirect human users to SPA (bots should stay on this HTML)
       if (!isBot()) {
-        setTimeout(function() {
-          window.location.href = '/#' + window.location.pathname;
-        }, 1000);
+        const path = window.location.pathname || '/';
+        const normalizedPath = path.startsWith('/') ? path : '/' + path;
+        const search = window.location.search || '';
+        const target = '/#' + normalizedPath + search;
+        window.location.replace(target);
       }
     </script>
   </head>
