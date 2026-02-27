@@ -11,15 +11,13 @@ Over the last three years we’ve seen billions of investment pour into software
 > The tech is great, but you’ll find deployments challenging
 > The restaurant industry is too difficult to sell into, and the cycles are long
 
-The subtext is clear. The hockey stick for hardware startups isn’t as steep as for software.
+The subtext is clear. The hockey stick for hardware startups isn’t expected to be as steep as for software.
 
-This is a tough pill to swallow, and I can say that this was personally the hardest realisation in my KAIKAKU journey to reconcile. Everything we’d been working towards for the past two years had been reduced to ‘too slow’. Having read Extreme Ownership the year before, the slump was short lived - the burden of proof is on us to demonstrate that hardware has value and is scalable. 
-
-### The Truth
+This is a tough pill to swallow, and was the hardest realisation in my KAIKAKU journey to reconcile. Everything we’d been working towards for the past two years had been reduced to ‘too slow’. Having read Extreme Ownership the year befor, however, the slump was short lived - the burden of proof is on us to demonstrate that hardware has value and is scalable.
 
 The majority of Venture Capital backed companies are tech. In 2025 in Europe, hardware attracted just 17% of VC funding, [while AI received 31%](https://news.crunchbase.com/venture/european-funding-nudged-higher-ai-led-2025/). In the US, [this balloons to 61%](https://www.oecd.org/en/publications/venture-capital-investments-in-artificial-intelligence-through-2025_a13752f5-en/full-report.html)
 
-Yet in its wake, other forms of technology and innovation have been left in the shadows. Splitting technology into hardware and software is often reductive, but as the co-founder of a hardware startup, it feels difficult to blur the line between the two. 
+Yet in its wake, other forms of technology and innovation have been left in the shadows. Splitting technology into hardware and software is often reductive, particularly in the robotics space, but as the co-founder of a hardware-first startup, it feels difficult to blur the line between the two. 
 
 ### Fighting to Force the Future
 
@@ -33,7 +31,7 @@ Having spent these 2 years iterating daily, deployed four generations of Fusion 
 
 ### The Truth
 
-[Common Room](https://www.eatcommonroom.com/), having been a roaring success as a living lab, allowing us to speed run 5+ years of R&D into 18 months, was closed in November 2025. We immediately switched our attention to deploying Fusion into existing restaurants. Quickly, we realised the negativity around hardware was right. Restaurants *were* keen to innovate, but deploying a revolutionary piece of hardware into hectic and varied environments was a serious roadblock. 
+[Common Room](https://www.eatcommonroom.com/), having been a roaring success as a living lab, allowing us to speed run 5+ years of R&D into 18 months, was closed in November 2025. We immediately switched our attention to deploying Fusion into existing restaurants. Quickly, we realised the negativity around hardware scaling had legs. Restaurants *were* keen to innovate, but deploying a revolutionary piece of hardware into hectic and varied environments was a serious roadblock.
 
 > One shot full automation was simply too much to ask the restaurant industry to underwrite.
 
@@ -84,11 +82,11 @@ Here’s how we did it.
     
 4. **Rush to deployments.**
     
-    While building trust is key, engineers need to be immersed in real operations. We used to clean our own robots in Common Room, but even in the world of B2B, all of our engineers are *behind the counter* troubleshooting in real time.
+    While building trust is important, engineers need to be immersed in real operations. We used to clean our own robots in Common Room, but even in the world of B2B, all of our engineers are *behind the counter* troubleshooting in real time.
     
 5. **Sensing first.**
     
     Our new approach is to demonstrate core issues in operations through simple but reliable sensing. This makes selling the grander vision of automation more convincing, and builds the data processing and communication foundations for robotics.
     
 
-**If hardware is hard - good. The outcome is still on us.**
+**If hardware is hard - good. Let's use that to our advantage.**
