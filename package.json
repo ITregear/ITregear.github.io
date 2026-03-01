@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-static-html.js",
+    "build": "vite build && node scripts/generate-static-html.js && cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "check": "tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --no-push -m 'test deployment'"
+    "deploy": "gh-pages -d dist -m 'Deploy site'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -63,6 +63,7 @@
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "^2.15.2",
+    "remark-breaks": "^4.0.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.2.5",
@@ -85,6 +86,6 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.1",
     "typescript": "5.6.3",
-    "vite": "^5.4.14"
+    "vite": "^5.4.21"
   }
 }
