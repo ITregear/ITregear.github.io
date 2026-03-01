@@ -1,23 +1,23 @@
 ---
-title: "Hardware IS Scalable - Problem to Pivot"
+title: "Hardware IS Scalable - But You Have to Prove It"
 date: "2026-03-01"
 --- 
 
 ### Extreme Ownership
 
-Over the last three years we’ve seen billions of investment pour into software. 
+Over the last three years we’ve seen billions in investment pour into software. 
 
 > Hardware is too slow to scale
 > The tech is great, but you’ll find deployments challenging
 > The restaurant industry is too difficult to sell into, and the cycles are long
 
-The subtext is clear. The hockey stick for hardware startups isn’t expected to be as steep as for software.
+When I started with KAIKAKU, I was brimming with optimism surrounding hardware and robotics, but over the last two years I've realised an uncomfortable truth - nobody expects the hockey stick to be as steep with real physical products.
 
-This is a tough pill to swallow, and was the hardest realisation in my KAIKAKU journey to reconcile. Everything we’d been working towards for the past two years had been reduced to ‘too slow’. Having read Extreme Ownership the year befor, however, the slump was short lived - the burden of proof is on us to demonstrate that hardware has value and is scalable.
+This is a tough pill to swallow, and has been the hardest discovery in my KAIKAKU journey to reconcile. Everything we had such high conviction in had been reduced to 'too slow'. Having read Extreme Ownership the year before, however, the slump was short-lived - the burden of proof was on us to demonstrate that hardware has value and is scalable.
 
-The majority of Venture Capital backed companies are tech. In 2025 in Europe, hardware attracted just 17% of VC funding, [while AI received 31%](https://news.crunchbase.com/venture/european-funding-nudged-higher-ai-led-2025/). In the US, [this balloons to 61%](https://www.oecd.org/en/publications/venture-capital-investments-in-artificial-intelligence-through-2025_a13752f5-en/full-report.html)
+The majority of venture capital backed companies are tech. In 2025 in Europe, hardware attracted just 17% of VC funding, [while AI received 31%](https://news.crunchbase.com/venture/european-funding-nudged-higher-ai-led-2025/). In the US, [this balloons to 61%](https://www.oecd.org/en/publications/venture-capital-investments-in-artificial-intelligence-through-2025_a13752f5-en/full-report.html)
 
-Yet in its wake, other forms of technology and innovation have been left in the shadows. Splitting technology into hardware and software is often reductive, particularly in the robotics space, but as the co-founder of a hardware-first startup, it feels difficult to blur the line between the two. 
+Yet in its wake, other forms of technology and innovation have been left in the shadows. Splitting technology into hardware and software is often reductive, particularly in the robotics space, but as the co-founder of a hardware-first startup, it often feels difficult not to pick a side.
 
 ### Fighting to Force the Future
 
@@ -25,7 +25,7 @@ At KAIKAKU we’re fighting to drag the archaic restaurant sector into the 21st 
 
 ![image.png](./images/fusion_v4.png)
 
-Yet this is still merely a stepping stone. We want a paradigm shift, with tech first restaurants. Robotics and automations in the front of house, computer vision in store and in the back of house. Complete and total data collection to generate insights current restauranteurs can only dream of. To get there, we are adamant that both hardware and software are required to operate in unison. What’s the use in intelligent analytics engines without the right sensing to feed it? If you can detect issues with human portioning performance, why not automate the process instead?
+Yet this is still merely a stepping stone. We want a paradigm shift, with tech first restaurants. Robotics and automation in the front of house, computer vision in store and in the back of house. Complete and total data collection to generate insights current restaurateurs can only dream of. To get there, we are adamant that both hardware and software are required to operate in unison. What’s the use in intelligent analytics engines without the right sensing to feed it? If you can detect issues with human portioning performance, why not automate the process instead?
 
 Having spent these 2 years iterating daily, deployed four generations of Fusion into our living laboratory restaurant, Common Room, and serving over 15,000 real bowls to real paying customers, we felt we were ready to commercialise. Restaurants we knew were (and still are) keen to embrace technology, we’d battle tested our hardware, and we had a team of forward deployed engineers who’d spent more hours washing a robot than surely all other companies on earth combined.
 
@@ -33,7 +33,7 @@ Having spent these 2 years iterating daily, deployed four generations of Fusion 
 
 [Common Room](https://www.eatcommonroom.com/), having been a roaring success as a living lab, allowing us to speed run 5+ years of R&D into 18 months, was closed in November 2025. We immediately switched our attention to deploying Fusion into existing restaurants. Quickly, we realised the negativity around hardware scaling had legs. Restaurants *were* keen to innovate, but deploying a revolutionary piece of hardware into hectic and varied environments was a serious roadblock.
 
-> One shot full automation was simply too much to ask the restaurant industry to underwrite.
+> One-shot full automation was simply too much to ask the restaurant industry to underwrite.
 
 So we were presented a choice. Double down on the negativity surrounding hardware, and further broaden the polarising divide between ‘hardware first’ and ‘software first’. Or try and prove the contrarian take - that hardware can be deployed into an antiquated industry, with short sales cycles, and fast scaling.
 
@@ -52,7 +52,7 @@ All restaurants struggle with Cost of Goods Sold (COGS) tracking, with zero visi
 
 ![Prototypes](./images/ts_prototypes.png)
 
-Laser cut prototype that afternoon. Full scale proof of concept by the end of the week. CAD completed the week after. Patent attorneys instructed the same day. Mass event detection and allocation algorithm working by week 3.
+Laser-cut prototype that afternoon. Full-scale proof of concept by the end of the week. CAD completed the week after. Patent attorneys instructed the same day. Mass event detection and allocation algorithm working by week 3.
 
 ![Traysense Render](./images/traysense_render.png)
 
@@ -64,17 +64,17 @@ Three days later we were deployed in a second location (in a different country).
 
 ### Changing the Tide
 
-This story is meant to be just one datapoint in the wave of founders and engineers that know hardware innovation has just as much value to give. But it’s also a call to move on from the ‘hardware *is* hard - that’s why they call it hardware’ mantra. The way to driving growth and investment into hardware startups isn’t to complain that too much money is going into software - it’s to take onboard the entirely valid criticisms that hardware development and deployment can be slow, and do something about it.
+This story is meant to be just one datapoint in the wave of founders and engineers that know hardware innovation has far more value to give. But it’s also a call to move on from the ‘hardware *is* hard - that’s why they call it hardware’ mantra. The way to drive growth and investment into hardware startups isn’t to complain that too much money is going into software - it’s to take on board the entirely valid criticisms that hardware development and deployment can be slow, and do something about it.
 
 Here’s how we did it.
 
 1. **Build up rather than down.**
     
-    Nobody has cracked full scale restaurant automation in one shot yet. Our approach is to drip feed automation and sensing into operations. This demonstrates value creation and builds trust, while we’re continue to add to capabilities over time.
+    Nobody has cracked full scale restaurant automation in one shot yet. Our approach is to drip feed automation and sensing into operations. This demonstrates value creation and builds trust, while we continue to add to capabilities over time.
     
 2. **Hardware modularity is key.**
     
-    The ultimate dream is a one-size-fits-all robot. While humanoids may be the answer, they are years away from highly dexterous manipulation to rival human hands. For now, hardware that can be readily configured across a wide variety of environments is key, otherwise you’ll limit your TAM.
+    The ultimate dream is a one-size-fits-all robot. While humanoids may be the answer, they are years away from the highly dexterous manipulation required to rival human hands. For now, hardware that can be readily configured across a wide variety of environments is key, otherwise you’ll limit your TAM.
     
 3. **Simple is king.**
     
